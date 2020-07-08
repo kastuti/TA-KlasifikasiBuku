@@ -8,7 +8,7 @@ class M_klasbuk extends CI_Model{
 
 	function getKlasbukById($id)
 	{
-		return $this->db->get_where('tb_klasbuk', ['id' => $id])->row_array();
+		return $this->db->get_where('tb_klasbuk', ['id_klasbuk' => $id_klasbuk])->row_array();
 	}
  
 	function insert_data($data,$table){

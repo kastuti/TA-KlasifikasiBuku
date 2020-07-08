@@ -17,7 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url('assets_login/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets_login/img/icon7.png') ?>" rel="shortcut icon"/>
+  <link href="<?php echo base_url('assets_login/img/logo3.png') ?>" rel="shortcut icon"/>
 
 </head>
 <body class="bg-gradient-primary" style="background-image: url('<?php echo base_url();?>assets_login/img/buku7.jpg');">

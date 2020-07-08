@@ -4,6 +4,10 @@
   <?php $this->load->view('v_topbody');?>
   <!-- /top body -->
 
+            <!-- menu profil -->
+            <?php $this->load->view('v_menu_profil');?>
+            <!-- /menu profil-->
+
             <br />
             
             <!-- sidebar menu -->

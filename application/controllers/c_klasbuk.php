@@ -32,14 +32,12 @@ class C_klasbuk extends CI_Controller {
 	}
 
 	public function simpan(){
-		$judul_buku = $this->input->post('judul_buku');
-		$kategori = $this->input->post('kategori');
-		$hasil_klasifikasi = $this->input->post('hasil_klasifikasi');
+		$js_buku = $this->input->post('js_buku');
+		$hasil = $this->input->post('hasil');
 
 		$data = array(
-			'judul_buku' => $judul_buku,
-			'kategori' => $kategori,
-			'hasil_klasifikasi' => $hasil_klasifikasi,
+			'js_buku' => $js_buku,
+			'hasil' => $hasil,
 			);
 		
 		$this->m_klasbuk->insert_data($data,'tb_klasbuk');

@@ -7,10 +7,15 @@ class C_auth extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+
+		// if ($this->session->userdata('email')){
+		// 	redirect('c_dashboard');
+		// }
 	}
 
 	public function index()
 	{
+
 		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
 
@@ -62,6 +67,7 @@ class C_auth extends CI_Controller
 
 	public function registrasi()
 	{
+
 		$this->form_validation->set_rules('nama', 'fullname', 'required|trim');
 		$this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[tb_admin.email]', [
 			'is_unique' => 'This email has already registered!'

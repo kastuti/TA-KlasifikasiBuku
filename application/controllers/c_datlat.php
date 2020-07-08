@@ -32,23 +32,23 @@ class C_datlat extends CI_Controller {
 	}
 
 	public function simpan(){
-		$judul_buku = $this->input->post('judul_buku');
+		$js_buku = $this->input->post('js_buku');
 		$kategori = $this->input->post('kategori');
-		$tgl_dibuat = $this->input->post('tgl_dibuat');
+		// $tgl_dibuat = $this->input->post('tgl_dibuat');
 
 		$data = array(
-			'judul_buku' => $judul_buku,
+			'js_buku' => $js_buku,
 			'kategori' => $kategori,
-			'tgl_dibuat' => $tgl_dibuat,
+			// 'tgl_dibuat' => $tgl_dibuat,
 			);
 		
 		$this->m_datlat->insert_data($data,'tb_datlat');
 		redirect('c_datlat');
 	}
 
-	public function hapus($id){
-		$where = array('id' => $id);
-		$this->m_datlat->delete_data($where,'tb_datlat');
-		redirect('c_datlat');
-	}
+	// public function hapus($id){
+	// 	$where = array('id' => $id);
+	// 	$this->m_datlat->delete_data($where,'tb_datlat');
+	// 	redirect('c_datlat');
+	// }
 }

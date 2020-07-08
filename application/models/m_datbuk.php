@@ -23,15 +23,21 @@ class M_datbuk extends CI_Model{
 	function ubahDataBuku()
 	{
 		$data = [
-			"judul_buku" => $this->input->post('judul_buku', true),
+			"js_buku" => $this->input->post('js_buku', true),
+			"edisi" => $this->input->post('edisi', true),
 			"isbn" => $this->input->post('isbn', true),
 			"penerbit" => $this->input->post('penerbit', true),
 			"tahun_terbit" => $this->input->post('tahun_terbit', true),
+			"deskripsi_fisik" => $this->input->post('deskripsi_fisik', true),
+			"bahasa" => $this->input->post('bahasa', true),
 			"tempat_terbit" => $this->input->post('tempat_terbit', true),
-			"deskripsi" => $this->input->post('deskripsi', true)
+			"klasifikasi" => $this->input->post('klasifikasi', true),
+			"sinopsis" => $this->input->post('sinopsis', true),
+			"pengarang" => $this->input->post('pengarang', true),
+			"cover" => $this->input->post('cover', true)
 		];
 
-		$this->db->where('id_buku', $this->input->post('id'));
+		$this->db->where('id_buku', $this->input->post('id_buku'));
 		$this->db->update('tb_buku', $data);
 	}
 

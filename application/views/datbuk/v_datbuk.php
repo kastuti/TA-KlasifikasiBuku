@@ -5,6 +5,10 @@
   <?php $this->load->view('v_topbody');?>
   <!-- /top body -->
 
+            <!-- menu profil -->
+            <?php $this->load->view('v_menu_profil');?>
+            <!-- /menu profil-->
+
             <br />
 
             <!-- sidebar menu -->
@@ -26,6 +30,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Data Buku</h2>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_add_new"><i class="fa fa-plus m-right-xs"> Tambah Data</i></a></span>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -34,7 +39,6 @@
                             <div class="card-box table-responsive">
                     <p class="text-muted font-13 m-b-30">
                       Data buku merupakan data yang berisi daftar buku yang telah diklasifikasikan.
-                      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_add_new"><i class="fa fa-plus m-right-xs"> Tambah Data</i></a></span>
                     </p>
                     <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
                       <thead>
@@ -42,11 +46,17 @@
                           <th>No</th>
                           <th>ID</th>
                           <th>Judul Buku</th>
+                          <th>Edisi</th>
                           <th>ISBN</th>
                           <th>Penerbit</th>
                           <th>Tahun Terbit</th>
+                          <th>Deskripsi Fisik</th>
+                          <th>Bahasa</th>
                           <th>Tempat Terbit</th>
-                          <th>Deskripsi</th>
+                          <th>Klasifikasi</th>
+                          <th>Sinopsis</th>
+                          <th>Pengarang</th>
+                          <th>Cover</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
@@ -62,11 +72,17 @@
                           <td><?php echo $no++;?></td>
                           <td><?php echo $row->id_buku;?></td>
                           <td><?php echo $row->judul_buku;?></td>
+                          <td><?php echo $row->edisi;?></td>
                           <td><?php echo $row->isbn;?></td>
                           <td><?php echo $row->penerbit;?></td>
                           <td><?php echo $row->tahun_terbit;?></td>
+                          <td><?php echo $row->deskripsi_fisik;?></td>
+                          <td><?php echo $row->bahasa;?></td>
                           <td><?php echo $row->tempat_terbit;?></td>
-                          <td><?php echo $row->deskripsi;?></td>
+                          <td><?php echo $row->klasifikasi;?></td>
+                          <td><?php echo $row->sinopsis;?></td>
+                          <td><?php echo $row->pengarang;?></td>
+                          <td><img src='<?=base_url()?>upload/<?=$row->cover;?>' width='100' height='100'></td>
                           <td>
                           <a href="<?php echo base_url('c_datbuk/hapus/'.$row->id_buku);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
                           <a href="<?php echo base_url('c_datbuk/ubah/'.$row->id_buku);?>" class="btn btn-primary btn-sm"><i class="fa fa-edit m-right-xs"> Ubah</i></a>
@@ -90,45 +106,104 @@
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url('c_datbuk/simpan');?>" method="post">
                     <div class="modal-body">
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="judul_buku">Judul Buku<span class="required">*</span>
+                        <label class="col-form-label col-md-4 col-sm-4 label-align" for="judul_buku">Judul Buku<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
+                        <div class="col-md-8 col-sm-8 ">
                           <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control ">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="kategori">ISBN<span class="required">*</span>
+                        <label class="col-form-label col-md-4 col-sm-4 label-align" for="edisi">Edisi<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
+                        <div class="col-md-8 col-sm-8 ">
+                          <input type="text" id="edisi" name="edisi" required="required" class="form-control ">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-4 col-sm-4 label-align" for="isbn">ISBN<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 ">
                           <input type="text" id="isbn" name="isbn" required="required" class="form-control">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Penerbit<span class="required">*</span>
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Penerbit<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
+                        <div class="col-md-8 col-sm-8 ">
                           <input id="penerbit" name="penerbit" class="form-control" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Tahun Terbit<span class="required">*</span>
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Tahun Terbit<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
+                        <div class="col-md-8 col-sm-8 ">
                           <input id="tahun_terbit" name="tahun_terbit" class="form-control" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Tempat Terbit<span class="required">*</span>
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Deskripsi Fisik<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
+                        <div class="col-md-8 col-sm-8 ">
+                          <input id="deskripsi_fisik" name="deskripsi_fisik" class="form-control" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Bahasa<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 ">
+                          <input id="bahasa" name="bahasa" class="form-control" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Tempat Terbit<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-86 ">
                           <input id="tempat_terbit" name="tempat_terbit" class="form-control" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Deskripsi<span class="required">*</span>
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Klasifikasi<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="deskripsi" name="deskripsi" class="form-control" required="required" type="text">
+                        <div class="col-md-8 col-sm-8 ">
+                          <select class="select2_group form-control" name="klasifikasi" id="klasifikasi">
+                            <optgroup label="Computer science, information & general works">
+                              <option value="AK">Knowledge</option>
+                              <option value="HI">The book</option>
+                              <option value="AK">Systems</option>
+                              <option value="HI">Computer science</option>
+                              <option value="AK">Computer programming, programs, data, security</option>
+                              <option value="HI">Special computer methods</option>
+                            </optgroup>
+                            <optgroup label="Philosophy & psychology ">
+                            </optgroup>
+                            <optgroup label="Religion">
+                            </optgroup>
+                            <optgroup label="Social sciences">
+                            </optgroup>
+                            <optgroup label="Language">
+                            </optgroup>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Sinopsis<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 ">
+                          <input id="sinopsis" name="sinopsis" class="form-control" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Pengarang<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 ">
+                          <input id="pengarang" name="pengarang" class="form-control" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-4 col-sm-4 label-align">Cover<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 ">
+                          <input id="cover" name="cover" class="form-control border-input" type="file" multiple="">
                         </div>
                       </div>
                       <div class="modal-footer">
