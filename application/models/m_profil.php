@@ -6,20 +6,21 @@ class M_profil extends CI_Model{
 		return $this->db->get('tb_admin');
 	}
 
-	function getDatprofById($id){
-		return $this->db->get_where('tb_admin', ['id' => $id])->row_array();
+	function getProfilById($id)
+	{
+		return $this->db->get_where('tb_admin', ['id_admin' => $id])->row_array();
 	}
-
-
-	function ubahDataBuku()
+ 
+	function ubahProfil()
 	{
 		$data = [
-			"nama" => $this->input->post('nama', true),
 			"email" => $this->input->post('email', true),
+			"nama" => $this->input->post('nama', true),
 			"password" => $this->input->post('password', true),
+			"foto" => $this->input->post('foto', true),
 		];
 
-		$this->db->where('id', $this->input->post('id'));
+		$this->db->where('id_admin', $this->input->post('id_admin'));
 		$this->db->update('tb_admin', $data);
 	}
 

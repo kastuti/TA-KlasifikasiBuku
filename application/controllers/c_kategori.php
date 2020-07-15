@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_datlat extends CI_Controller {
+class C_kategori extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
@@ -10,15 +10,18 @@ class C_datlat extends CI_Controller {
         // $this->load->library('pagination');
         // $this->load->library('form_validation');
         // $this->load->database();
-        $this->load->model('m_datlat');
-  	}
-  	
+        $this->load->model('m_kategori');
+  //       if($this->session->userdata('status') != "login"){
+		// 	redirect(base_url("c_datlat"));
+		// }
+    }
+
 	public function index()
 	{
-		$isi['content'] 	= 'datlat/v_datlat';
-		$isi['judul'] 		= 'Data Latih';
-		$isi['data']		= $this->db->get('tb_datlat');
-		$this->load->view('datlat/v_datlat',$isi);
+		$isi['content'] 	= 'datlat/v_kategori';
+		$isi['judul'] 		= 'Data Kategori';
+		$isi['data']		= $this->db->get('tb_kategori');
+		$this->load->view('datlat/v_kategori',$isi);
 	}
 
 	// public function input()
@@ -29,20 +32,14 @@ class C_datlat extends CI_Controller {
 	// }
 
 	public function simpan(){
-		$judul_buku = $this->input->post('judul_buku');
-		$sinopsis = $this->input->post('sinopsis');
-		$kategori = $this->input->post('kategori');
-		// $tgl_dibuat = $this->input->post('tgl_dibuat');
+		$judul_buku = $this->input->post('nama_kategori');
 
 		$data = array(
-			'judul_buku' => $judul_buku,
-			'sinopsis' => $sinopsis,
-			'kategori' => $kategori,
-			// 'tgl_dibuat' => $tgl_dibuat,
+			'judul_buku' => $nama_kategori,
 			);
 		
-		$this->m_datlat->insert_data($data,'tb_datlat');
-		redirect('c_datlat');
+		$this->m_kategori->insert_data($data,'tb_kategori');
+		redirect('c_kategori');
 	}
 
 	// public function hapus($id){

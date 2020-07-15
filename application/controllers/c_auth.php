@@ -6,7 +6,11 @@ class C_auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('form_validation');
+        $this->load->helper('url');
+        $this->load->library('pagination');
+        $this->load->library('form_validation');
+        $this->load->database();
+        $this->load->model('m_auth');
 
 		// if ($this->session->userdata('email')){
 		// 	redirect('c_dashboard');
@@ -97,6 +101,39 @@ class C_auth extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat email Anda sudah terdaftar. Silahkan masuk!</div>');
 			redirect('c_auth');
 		}
+	}
+
+	public function lupa_password() {
+		$this->load->view('auth/v_auth_header');
+  		$this->load->view('auth/v_lupa_password');
+  		$this->load->view('auth/v_auth_footer');
+	}
+
+	function cari_email() {
+	  $isi['result']=$this->m_auth->result_email();
+	  $this->load->view('auth/v_auth_header');
+  	  $this->load->view('auth/v_cari_email',$isi);
+  	  $this->load->view('auth/v_auth_footer');
+	  
+	}
+
+	function view_email($id_admin) {
+	  $isi['emailku']=$this->m_auth->lihat_email($id_admin);
+	  $this->load->view('auth/v_auth_header');
+  	  $this->load->view('auth/v_lihat_email',$isi);
+  	  $this->load->view('auth/v_auth_footer');
+	}
+
+	function sandi_baru($id_admin) {
+	  $isi=array(
+	    'password'=>md5($this->input->post('password'))
+	    );
+	  $this->m_auth->ubah_sandi($isi,$id_admin);
+	  $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>Kata Sandi berhasil diubah.
+	  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+	  <span aria-hidden='true'>&times;</span>
+	  </button></div>");
+	  redirect(base_url());
 	}
 
 	public function logout()

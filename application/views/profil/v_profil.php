@@ -4,6 +4,10 @@
   <?php $this->load->view('v_topbody');?>
   <!-- /top body -->
 
+            <!-- menu profil -->
+            <?php $this->load->view('v_menu_profil');?>
+            <!-- /menu profil-->
+
             <br />
 
             <!-- sidebar menu -->
@@ -28,14 +32,14 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div class="col-md-12 col-sm-12  profile_left">
+                    <div class="col-md-3 col-sm-3  profile_left">
                       <div class="profile_img">
                         <div id="crop-avatar">
                           <!-- Current avatar -->
                           <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
                         </div>
                       </div>
-                      <h3><?php echo $this->session->userdata("nama"); ?></h3>
+                      <h3>Samuel Doe</h3>
 
                       <ul class="list-unstyled user_data">
                         <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
@@ -51,7 +55,7 @@
                         </li>
                       </ul>
 
-                      <span class="btn btn-success btn-sm"><i class="fa fa-edit m-right-xs"></i>Edit Profile</span>
+                      <a class="btn btn-success btn-sm"><i class="fa fa-edit m-right-xs"></i> Edit Profile</a>
                       <br />
 
                     </div>

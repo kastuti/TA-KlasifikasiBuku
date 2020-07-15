@@ -14,7 +14,7 @@
                     <?php echo form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Alamat Email" value="<?php echo set_value('email'); ?>">
+                  <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Alamat Email" value="<?php echo set_value('email'); ?>">
                   <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group row">
@@ -35,7 +35,7 @@
                 <a class="small" href="forgot-password.html">Forgot Password?</a>
               </div> -->
               <div class="text-center">
-                <a class="small" href="<?php echo base_url('c_auth'); ?>">Anda sudah memiliki akun? Silahkan login</a>
+                <a class="small" href="<?php echo base_url('c_auth'); ?>">Anda sudah memiliki akun? Silahkan login!</a>
               </div>
             </div>
           </div>

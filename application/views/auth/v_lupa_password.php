@@ -9,30 +9,22 @@
               <div class="col-lg">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Halaman Masuk</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Halaman Lupa Kata Sandi</h1>
+                    <p class="mb-4">Masukkan alamat email Anda dan kami akan mengirimkan Anda tautan untuk mereset kata sandi Anda!</p>
                   </div>
-
                   <?php echo $this->session->flashdata('message'); ?>
-
-                  <form class="user" method="post" action="<?php echo base_url('c_auth'); ?>">
+                  <form class="user" method="GET" action="<?php echo base_url('c_auth/cari_email') ?>">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Masukan alamat email" value="<?php echo set_value('email'); ?>">
+                      <input type="email" class="form-control form-control-user" id="email" name="cari" placeholder="Masukan alamat email Anda" value="<?php echo set_value('email'); ?>">
                       <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukan password">
-                      <?php echo form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                      Masuk
+                      Kirim Email
                     </button>
                     <hr>
                   </form>
                   <div class="text-center">
-                    <a class="small" href="<?php echo base_url('c_auth/lupa_password'); ?>">Lupa Kata Sandi?</a>
-                  </div>
-                  <div class="text-center">
-                    <a class="small" href="<?php echo base_url('c_auth/registrasi'); ?>">Buat Akun!</a>
+                    <a class="small" href="<?php echo base_url('c_auth'); ?>">Anda sudah memiliki akun? Silahkan login!</a>
                   </div>
                 </div>
               </div>

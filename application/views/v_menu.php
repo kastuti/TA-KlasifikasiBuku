@@ -11,15 +11,15 @@
               <div class="menu_section">
                 <h3>Data Latih</h3>
                 <ul class="nav side-menu">
-                  <li><a class="nav-link" href="<?php echo base_url('c_datlat')?>"><i class="fa fa-table"></i> Data Latih</span></a></li>
-                </ul>
+                  <li><a class="nav-link" href="<?php echo base_url('c_kategori')?>"><i class="fa fa-th-large"></i> Daftar Katogori</span></a></li>
+                  <li><a class="nav-link" href="<?php echo base_url('c_datlat')?>"><i class="fa fa-table"></i> Daftar Data Latih</span></a></li>
               </div>
 
               <div class="menu_section">
                 <h3>Data Buku</h3>
                 <ul class="nav side-menu">
                   <li><a class="nav-link" href="<?php echo base_url('c_klasbuk')?>"><i class="fa fa-bar-chart"></i> Klasifikasi Buku</a></li>
-                  <li><a class="nav-link" href="<?php echo base_url('c_datbuk')?>"><i class="fa fa-book"></i> Data Buku</a></li>
+                  <li><a class="nav-link" href="<?php echo base_url('c_datbuk')?>"><i class="fa fa-book"></i> Daftar Buku</a></li>
                 </ul>
               </div>
             </div>

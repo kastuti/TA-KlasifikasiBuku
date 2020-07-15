@@ -21,6 +21,7 @@ class C_datbuk extends CI_Controller {
 		$isi['content'] 	= 'datbuk/v_datbuk';
 		$isi['judul'] 		= 'Data Buku';
 		$isi['data']		= $this->db->get('tb_buku');
+		
 		$this->load->view('datbuk/v_datbuk',$isi);
 	}
 

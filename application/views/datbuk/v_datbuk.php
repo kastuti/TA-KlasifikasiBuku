@@ -7,7 +7,7 @@
 
             <!-- menu profil -->
             <?php $this->load->view('v_menu_profil');?>
-            <!-- /menu profil-->
+            <!-- /menu profil
 
             <br />
 
@@ -29,7 +29,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Buku</h2>
+                    <h2>Daftar Buku</h2>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_add_new"><i class="fa fa-plus m-right-xs"> Tambah Data</i></a></span>
                     <div class="clearfix"></div>
                   </div>

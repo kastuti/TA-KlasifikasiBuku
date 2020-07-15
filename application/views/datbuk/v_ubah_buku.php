@@ -44,6 +44,13 @@
                         </div>
                       </div>
                       <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="edisi">Edisi<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                          <input type="text" id="edisi" name="edisi" required="required" class="form-control" value="<?= $c_datbuk['edisi']; ?>">
+                        </div>
+                      </div>
+                      <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="isbn">ISBN<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
@@ -134,7 +141,7 @@
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
                           <a href="<?php echo base_url('c_datbuk')?>" class="btn btn-danger"><i class="fa fa-remove m-right-xs"> Batal</i></a>
-                          <a href="<?php echo base_url('c_datbuk')?>" class="btn btn-success"><i class="fa fa-file m-right-xs"> Simpan</i></a>
+                          <a href="<?php echo base_url('c_datbuk')?>" class="btn btn-success"><i class="fa fa-file m-right-xs"> Ubah</i></a>
                           <!-- <button type="submit" value="upload" class="btn btn-success"><i class="fa fa-file m-right-xs"> Simpan</i></button> -->
                         </div>
                       </div>
