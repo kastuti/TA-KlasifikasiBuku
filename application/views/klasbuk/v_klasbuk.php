@@ -1,27 +1,4 @@
 
-<?php $this->load->view('v_header');?>
-
-  <!-- top body -->
-  <?php $this->load->view('v_topbody');?>
-  <!-- /top body -->
-
-            <!-- menu profil -->
-            <?php $this->load->view('v_menu_profil');?>
-            <!-- /menu profil-->
-  
-            <br />
-
-            <!-- sidebar menu -->
-            <?php $this->load->view('v_menu');?>
-            <!-- /sidebar menu -->
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <?php $this->load->view('v_topnav');?>
-        <!-- /top navigation -->
-
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -54,7 +31,7 @@
                         <?php
                           $no=0;
                           $no++;
-                          foreach ($data->result() as $row){
+                          foreach ($klasbuk as $row){
                         ?>
 
                         <tr class="table-primary">
@@ -86,7 +63,6 @@
                           <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control ">
                         </div>
                     </div>
-                    
                     <div class="modal-footer">
                     <div class="ln_solid"></div>
                       <div class="item form-group">
@@ -99,29 +75,14 @@
                   </form>
               </div>
               </div>
-              </div>
-                  
+              </div>  
               <!--END MODAL ADD-->
-
             </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
         <!-- /page content -->
-
-
-        <!-- footer content -->
-        <?php $this->load->view('v_footer');?>
-        <!-- /footer content -->
-      </div>
-    </div>
-
-    <?php $this->load->view('v_script');?>
-
-  </body>
-</html>

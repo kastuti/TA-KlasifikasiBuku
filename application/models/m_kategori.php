@@ -6,9 +6,9 @@ class M_kategori extends CI_Model{
 		return $this->db->get('tb_kategori');
 	}
 
-	function getKategoriById($id)
+	function getKategoriById($kd)
 	{
-		return $this->db->get_where('tb_kategori', ['id_kategori' => $id_kategori])->row_array();
+		return $this->db->get_where('tb_kategori', ['kd_kategori' => $kd_kategori])->row_array();
 	}
  
 	function insert_data($data,$table){

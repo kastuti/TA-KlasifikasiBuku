@@ -1,25 +1,3 @@
-<?php $this->load->view('v_header');?>
-
-  <!-- top body -->
-  <?php $this->load->view('v_topbody');?>
-  <!-- /top body -->
-
-            <!-- menu profil -->
-            <?php $this->load->view('v_menu_profil');?>
-            <!-- /menu profil-->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <?php $this->load->view('v_menu');?>
-            <!-- /sidebar menu -->
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <?php $this->load->view('v_topnav');?>
-        <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -33,7 +11,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="" method="post">
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action=""  method="post" action="<?php echo base_url(). 'c_datbuk/ubah'; ?>">
                       <input type="hidden" name="id" value="<?= $c_datbuk['id_buku']; ?>">
 
                       <div class="item form-group">
@@ -140,8 +118,8 @@
                       <div class="ln_solid"></div>
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
-                          <a href="<?php echo base_url('c_datbuk')?>" class="btn btn-danger"><i class="fa fa-remove m-right-xs"> Batal</i></a>
-                          <a href="<?php echo base_url('c_datbuk')?>" class="btn btn-success"><i class="fa fa-file m-right-xs"> Ubah</i></a>
+                          <a href="<?php echo base_url('c_datbuk')?>" class="btn btn-danger btn-sm"><i class="fa fa-remove m-right-xs"> Batal</i></a>
+                          <button type="submit" name="ubah" class="btn btn-success btn-sm"><i class="fa fa-file m-right-xs"> Simpan</i></button>
                           <!-- <button type="submit" value="upload" class="btn btn-success"><i class="fa fa-file m-right-xs"> Simpan</i></button> -->
                         </div>
                       </div>
@@ -151,18 +129,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
         <!-- /page content -->
-
-        <!-- footer content -->
-        <?php $this->load->view('v_footer');?>
-        <!-- /footer content -->
-      </div>
-    </div>
-
-    <?php $this->load->view('v_script');?>
-  
-  </body>
-</html>

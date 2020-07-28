@@ -1,25 +1,3 @@
-<?php $this->load->view('v_header');?>
-
-  <!-- top body -->
-  <?php $this->load->view('v_topbody');?>
-  <!-- /top body -->
-
-            <!-- menu profil -->
-            <?php $this->load->view('v_menu_profil');?>
-            <!-- /menu profil-->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <?php $this->load->view('v_menu');?>
-            <!-- /sidebar menu -->
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <?php $this->load->view('v_topnav');?>
-        <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -43,7 +21,7 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>ID</th>
+                          <th>Kode Kategori</th>
                           <th>Nama Kategori</th>
                           <!-- <th>Aksi</th> -->
                         </tr>
@@ -54,12 +32,12 @@
                         <?php
                           $no=0;
                           $no++;
-                          foreach ($data->result() as $row){
+                          foreach ($kategori as $row){
                         ?>
 
                         <tr class="table-primary">
                           <td><?php echo $no++;?></td>
-                          <td><?php echo $row->id_kategori;?></td>
+                          <td><?php echo $row->kd_kategori;?></td>
                           <td><?php echo $row->nama_kategori;?></td>
                           <!-- <td><?php echo $row->tgl_dibuat;?></td> -->
                           <!-- <td>
@@ -81,9 +59,15 @@
                   <h4 class="modal-title" id="myModalLabel">Tambah Data Kategori</h4>
               </div>
                 <div class="modal-body">
-                  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url('c_datlat/simpan');?>" method="post">
+                  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url('c_kategori/simpan');?>" method="post">
                     <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama kategori">Nama Kategori<span class="required">*</span></label>
+                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="kd_kategori">Kode Kategori<span class="required">*</span></label>
+                        <div class="col-md-9 col-sm-9 ">
+                          <input type="text" id="kd_kategori" name="kd_kategori" required="required" class="form-control ">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama_kategori">Nama Kategori<span class="required">*</span></label>
                         <div class="col-md-9 col-sm-9 ">
                           <input type="text" id="nama_kategori" name="nama_kategori" required="required" class="form-control ">
                         </div>
@@ -115,15 +99,3 @@
       </div>
     </div>
         <!-- /page content -->
-
-
-        <!-- footer content -->
-        <?php $this->load->view('v_footer');?>
-        <!-- /footer content -->
-      </div>
-    </div>
-
-    <?php $this->load->view('v_script');?>
-
-  </body>
-</html>

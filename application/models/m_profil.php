@@ -1,6 +1,12 @@
 <?php 
  
-class M_profil extends CI_Model{	
+class M_profil extends CI_Model{
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+	}	
 
 	function get_data(){
 		return $this->db->get('tb_admin');
@@ -11,7 +17,7 @@ class M_profil extends CI_Model{
 		return $this->db->get_where('tb_admin', ['id_admin' => $id])->row_array();
 	}
  
-	function ubahProfil()
+	function ubahProfil($id)
 	{
 		$data = [
 			"email" => $this->input->post('email', true),
@@ -20,7 +26,7 @@ class M_profil extends CI_Model{
 			"foto" => $this->input->post('foto', true),
 		];
 
-		$this->db->where('id_admin', $this->input->post('id_admin'));
+		$this->db->where('id_admin', $id);
 		$this->db->update('tb_admin', $data);
 	}
 

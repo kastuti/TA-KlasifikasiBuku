@@ -1,27 +1,5 @@
-<?php $this->load->view('v_header');?>
-  
-  <!-- top body -->
-  <?php $this->load->view('v_topbody');?>
-  <!-- /top body -->
+        
 
-            <!-- menu profil -->
-            <?php $this->load->view('v_menu_profil');?>
-            <!-- /menu profil-->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <?php $this->load->view('v_menu');?>
-            <!-- /sidebar menu -->
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <?php $this->load->view('v_topnav');?>
-        <!-- /top navigation -->
-
-        <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="row">
@@ -29,51 +7,53 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Profil Admin</h2>
+                    </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div class="col-md-3 col-sm-3  profile_left">
-                      <div class="profile_img">
-                        <div id="crop-avatar">
-                          <!-- Current avatar -->
-                          <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
-                        </div>
+
+                       <form action="">
+                         <!-- Default box -->
+                         <div class="container">
+                          <!-- <div class="card mb-5"> -->
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th width="20%">Administrator</th>
+                                  <th> <?= $data['nama'];?> </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Email</td>
+                                  <td> <?=$data['email'];?></td>
+                                </tr>
+                                <tr>
+                                  <td>Password</td>
+                                  <td> <?=$data['password']?></td>
+                                </tr>
+                                  <tr>
+                                  <td>Foto</td>
+                                  <td> <img src="<?= base_url('assets/production/images/profil/') . $data['foto'];?>" class="img-thumbnail"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div> 
+                          <div class="form-group">
+                            <label  class="col-md-12 control-label"></label>
+                            <div class="col-md-12">
+                            <a href="<?=base_url('c_profil/ubah/' . $data['id_admin']);?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>Edit Profil</a>
+                             <!--  <button class="bnt btn-success btn-sm" name="edit" type="submit">
+                                <i class="fa fa-edit"></i> Edit Profil
+                              </button> -->
+                            </div>
+                          </div>
+
+                        </form>
                       </div>
-                      <h3>Samuel Doe</h3>
-
-                      <ul class="list-unstyled user_data">
-                        <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
-                        </li>
-
-                        <li>
-                          <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
-                        </li>
-
-                        <li class="m-top-xs">
-                          <i class="fa fa-external-link user-profile-icon"></i>
-                          <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-                        </li>
-                      </ul>
-
-                      <a class="btn btn-success btn-sm"><i class="fa fa-edit m-right-xs"></i> Edit Profile</a>
-                      <br />
-
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <?php $this->load->view('v_footer');?>
-        <!-- /footer content -->
-      </div>
-    </div>
-
-    <?php $this->load->view('v_script');?>
-
-  </body>
-</html>

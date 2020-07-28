@@ -1,25 +1,3 @@
-<?php $this->load->view('v_header');?>
-
-  <!-- top body -->
-  <?php $this->load->view('v_topbody');?>
-  <!-- /top body -->
-
-            <!-- menu profil -->
-            <?php $this->load->view('v_menu_profil');?>
-            <!-- /menu profil-->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <?php $this->load->view('v_menu');?>
-            <!-- /sidebar menu -->
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <?php $this->load->view('v_topnav');?>
-        <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -47,6 +25,7 @@
                           <th>Judul Buku </th>
                           <th>Sinopsis</th>
                           <th>Kategori</th>
+                          <!-- <th>Frekuensi</th> -->
                           <!-- <th>Tanggal Dibuat</th> -->
                           <!-- <th>Aksi</th> -->
                         </tr>
@@ -57,7 +36,7 @@
                         <?php
                           $no=0;
                           $no++;
-                          foreach ($data->result() as $row){
+                          foreach ($datlat as $row){
                         ?>
 
                         <tr class="table-primary">
@@ -66,6 +45,7 @@
                           <td><?php echo $row->judul_buku;?></td>
                           <td><?php echo $row->sinopsis;?></td>
                           <td><?php echo $row->kategori;?></td>
+                          <!-- <td><?php echo $row->frekuensi;?></td> -->
                           <!-- <td><?php echo $row->tgl_dibuat;?></td> -->
                           <!-- <td>
                           <a href="<?php echo base_url('c_datlat/hapus/'.$row->id_datlat);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
@@ -122,6 +102,12 @@
                           </select>
                         </div>
                     </div>
+                    <!-- <div class="item form-group">
+                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="frekuensi">Frekuensi<span class="required">*</span></label>
+                        <div class="col-md-9 col-sm-9 ">
+                          <input type="text" id="frekuensi" name="frekuensi" required="required" class="form-control ">
+                        </div>
+                    </div> -->
                     <div class="modal-footer">
                       <div class="ln_solid"></div>
                       <div class="item form-group">
@@ -138,26 +124,12 @@
               </div>
               </div>
               <!--END MODAL ADD-->
-
             </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
         <!-- /page content -->
-
-
-        <!-- footer content -->
-        <?php $this->load->view('v_footer');?>
-        <!-- /footer content -->
-      </div>
-    </div>
-
-    <?php $this->load->view('v_script');?>
-
-  </body>
-</html>

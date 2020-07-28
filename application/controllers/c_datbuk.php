@@ -20,9 +20,15 @@ class C_datbuk extends CI_Controller {
 	{
 		$isi['content'] 	= 'datbuk/v_datbuk';
 		$isi['judul'] 		= 'Data Buku';
-		$isi['data']		= $this->db->get('tb_buku');
-		
+		$isi['datbuk']		= $this->db->get('tb_buku')->result();
+		$isi['data']        = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->view('v_header',$isi);
+        $this->load->view('v_menu',$isi);
+        $this->load->view('v_topnav',$isi);
 		$this->load->view('datbuk/v_datbuk',$isi);
+        $this->load->view('v_footer',$isi);
+		
 	}
 
 	public function input()
@@ -96,6 +102,7 @@ class C_datbuk extends CI_Controller {
 	{
 		$isi['content'] = 'datbuk/v_ubah_buku';
 		$isi['judul'] 	= 'Edit Data Buku';
+		$isi['data']     = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
 		$isi['c_datbuk'] = $this->m_datbuk->getDatbukById($id);
 
 		$this->form_validation->set_rules('judul_buku', 'JudulBuku', 'required');
@@ -112,7 +119,12 @@ class C_datbuk extends CI_Controller {
 		$this->form_validation->set_rules('cover', 'Cover', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
+
+			$this->load->view('v_header',$isi);
+	        $this->load->view('v_menu',$isi);
+	        $this->load->view('v_topnav',$isi);
 			$this->load->view('datbuk/v_ubah_buku',$isi);
+	        $this->load->view('v_footer',$isi);
 			
 		}else{
 			$this->m_datbuk->ubahDataBuku();

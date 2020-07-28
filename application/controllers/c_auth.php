@@ -6,19 +6,15 @@ class C_auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->helper('url');
-        $this->load->library('pagination');
         $this->load->library('form_validation');
-        $this->load->database();
         $this->load->model('m_auth');
-
-		// if ($this->session->userdata('email')){
-		// 	redirect('c_dashboard');
-		// }
 	}
 
 	public function index()
 	{
+		if ($this->session->userdata('email')){
+			redirect('c_dashboard');
+		}
 
 		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
@@ -53,7 +49,7 @@ class C_auth extends CI_Controller
 				$data = [
 					'email' => $admin['email']
 				];
-				$this->session->set_userdata[$data];
+				$this->session->set_userdata($data);
 				redirect('c_dashboard');
 			}
 			else
@@ -71,6 +67,9 @@ class C_auth extends CI_Controller
 
 	public function registrasi()
 	{
+		if ($this->session->userdata('email')){
+			redirect('c_dashboard');
+		}
 
 		$this->form_validation->set_rules('nama', 'fullname', 'required|trim');
 		$this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[tb_admin.email]', [
@@ -141,7 +140,9 @@ class C_auth extends CI_Controller
 		
 		$this->session->unset_userdata('email');
 
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah keluar!</div>');
-			redirect('c_auth');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah keluar!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button></div>');  
+		redirect('c_auth');
 	}
 }

@@ -17,27 +17,39 @@ class C_datlat extends CI_Controller {
 	{
 		$isi['content'] 	= 'datlat/v_datlat';
 		$isi['judul'] 		= 'Data Latih';
-		$isi['data']		= $this->db->get('tb_datlat');
+		$isi['datlat']		= $this->db->get('tb_datlat')->result();
+		$isi['data']        = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+
+
+		$this->load->view('v_header',$isi);
+        $this->load->view('v_menu',$isi);
+        $this->load->view('v_topnav',$isi);
 		$this->load->view('datlat/v_datlat',$isi);
+        $this->load->view('v_footer',$isi);
+		
 	}
 
-	// public function input()
-	// {
-	// 	$isi['content'] 	= 'datlat/v_tambah_datlat';
-	// 	$isi['judul'] 		= 'Tambah Data Latih';
-	// 	$this->load->view('datlat/v_tambah_datlat',$isi);
-	// }
+	public function input()
+	{
+		$isi['content'] 	= 'datlat/v_tambah_datlat';
+		$isi['judul'] 		= 'Tambah Data Latih';
+		$this->load->view('datlat/v_tambah_datlat',$isi);
+	}
 
 	public function simpan(){
 		$judul_buku = $this->input->post('judul_buku');
 		$sinopsis = $this->input->post('sinopsis');
 		$kategori = $this->input->post('kategori');
+		// $hasil = $this->input->post('hasil');
+		// $frekuensi = $this->input->post('frekuensi');
 		// $tgl_dibuat = $this->input->post('tgl_dibuat');
 
 		$data = array(
 			'judul_buku' => $judul_buku,
 			'sinopsis' => $sinopsis,
 			'kategori' => $kategori,
+			// 'hasil' => $hasil,
+			// 'frekuensi' => $frekuensi,
 			// 'tgl_dibuat' => $tgl_dibuat,
 			);
 		

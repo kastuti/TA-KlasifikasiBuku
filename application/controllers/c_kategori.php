@@ -20,22 +20,31 @@ class C_kategori extends CI_Controller {
 	{
 		$isi['content'] 	= 'datlat/v_kategori';
 		$isi['judul'] 		= 'Data Kategori';
-		$isi['data']		= $this->db->get('tb_kategori');
+		$isi['kategori']	= $this->db->get('tb_kategori')->result();
+		$isi['data']        = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->view('v_header',$isi);
+        $this->load->view('v_menu',$isi);
+        $this->load->view('v_topnav',$isi);
+		$this->load->view('datlat/v_kategori',$isi);
+        $this->load->view('v_footer',$isi);
+		
+	}
+
+	public function input()
+	{
+		$isi['content'] 	= 'datlat/v_kategori';
+		$isi['judul'] 		= 'Tambah Data Kategori';
 		$this->load->view('datlat/v_kategori',$isi);
 	}
 
-	// public function input()
-	// {
-	// 	$isi['content'] 	= 'datlat/v_tambah_datlat';
-	// 	$isi['judul'] 		= 'Tambah Data Latih';
-	// 	$this->load->view('datlat/v_tambah_datlat',$isi);
-	// }
-
 	public function simpan(){
-		$judul_buku = $this->input->post('nama_kategori');
+		$kd_kategori = $this->input->post('kd_kategori');
+		$nama_kategori = $this->input->post('nama_kategori');
 
 		$data = array(
-			'judul_buku' => $nama_kategori,
+			'kd_kategori' => $kd_kategori,
+			'nama_kategori' => $nama_kategori,
 			);
 		
 		$this->m_kategori->insert_data($data,'tb_kategori');

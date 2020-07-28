@@ -1,27 +1,4 @@
 
-<?php $this->load->view('v_header');?>
-
- <!-- top body -->
-  <?php $this->load->view('v_topbody');?>
-  <!-- /top body -->
-
-            <!-- menu profil -->
-            <?php $this->load->view('v_menu_profil');?>
-            <!-- /menu profil
-
-            <br />
-
-            <!-- sidebar menu -->
-            <?php $this->load->view('v_menu');?>
-            <!-- /sidebar menu -->
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <?php $this->load->view('v_topnav');?>
-        <!-- /top navigation -->
-
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -65,7 +42,7 @@
                         <?php
                           $no=0;
                           $no++;
-                          foreach ($data->result() as $row){
+                          foreach ($datbuk as $row){
                         ?>
 
                         <tr class="table-primary">
@@ -233,15 +210,3 @@
       </div>
     </div>
         <!-- /page content -->
-
-
-        <!-- footer content -->
-        <?php $this->load->view('v_footer');?>
-        <!-- /footer content -->
-      </div>
-    </div>
-
-    <?php $this->load->view('v_script');?>
-
-  </body>
-</html>
