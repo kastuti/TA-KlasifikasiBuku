@@ -37,29 +37,100 @@ class C_datlat extends CI_Controller {
 	}
 
 	public function simpan(){
-		$judul_buku = $this->input->post('judul_buku');
-		$sinopsis = $this->input->post('sinopsis');
+		$js_buku = $this->input->post('js_buku');
 		$kategori = $this->input->post('kategori');
-		// $hasil = $this->input->post('hasil');
-		// $frekuensi = $this->input->post('frekuensi');
-		// $tgl_dibuat = $this->input->post('tgl_dibuat');
 
 		$data = array(
-			'judul_buku' => $judul_buku,
-			'sinopsis' => $sinopsis,
+			'js_buku' => $js_buku,
 			'kategori' => $kategori,
-			// 'hasil' => $hasil,
-			// 'frekuensi' => $frekuensi,
-			// 'tgl_dibuat' => $tgl_dibuat,
 			);
 		
 		$this->m_datlat->insert_data($data,'tb_datlat');
 		redirect('c_datlat');
 	}
 
-	// public function hapus($id){
-	// 	$where = array('id' => $id);
-	// 	$this->m_datlat->delete_data($where,'tb_datlat');
-	// 	redirect('c_datlat');
-	// }
+	public function processing($id)
+	{
+		$datlat	 = $this->m_datlat->get_dataId($id);
+		$js_buku = $datlat['js_buku'];
+		$hasil   = strtolower(trim($js_buku));
+
+		$resultToken=$this->tokenizing($hasil);
+		$resultFiltering=$this->filtering($resultToken);
+
+		
+		$fixHasil=implode(' ', $resultFiltering);
+		$resultSteming=$this->steming($fixHasil);
+
+		
+		$id_datlat = array(
+		 	'id_datlat' => $id,
+		 	);
+		$data = array(
+			'hasil' 	=> $resultSteming
+		);
+		$this->m_datlat->ubah($id_datlat,$data);
+		redirect('c_datlat');
+	}
+
+	public function tokenizing($value)
+	{
+		return explode(' ', $value);
+	}
+
+	public function filtering($data)
+	{
+		
+		$getDbStopword=$this->db->query("SELECT * FROM tb_stopword")->row_array();
+
+		$stopword=explode(' ', $getDbStopword['kata']);
+
+		$hasil=[];
+   foreach ($data as $key => $value) {
+            
+        foreach($stopword as $a => $item){
+
+            
+            if($item==$value){
+                $hasil[]=$value;
+            }else{
+               
+            }
+        }
+        
+      
+   }
+
+
+   return str_replace($hasil, " ", $data);
+   
+
+
+	}
+
+
+	public function steming($filter)
+	{
+		$data=$this->db->query("SELECT * FROM tb_baseword")->result();
+		// $parabot = array("Meja Komputer", "Tempat Tidur", "Korsi", "Kompor", "Ember", "Sapu");
+		// print_r($parabot);exit();
+
+		foreach ($data as $key => $value) {
+			// $kata=json_decode($value->kata);
+			$data=explode(',', $value->kata);
+
+			foreach ($data as $key => $item) {
+				$filter = str_replace($data[$key], $value->kata_dasar, $filter);
+			}
+
+		}
+		return $filter;
+	}
+
+	public function hapus($id){
+		$where = array('id_datlat' => $id);
+		$this->m_datlat->delete_data($where,'tb_datlat');
+		redirect('c_datlat');
+	}
+
 }

@@ -13,25 +13,13 @@
             <div class="clearfix"></div>
              <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?= base_url('assets/production/images/profil/') . $data['foto']; ?>" class="img-circle profile_img">
+                <img src="<?= base_url('upload/profil/') . $data['foto']; ?>" class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
                 <h2><?= $data['nama'];?></h2>
               </div>
             </div>
-
-
-            <!-- menu profile quick info -->
-           <!--  <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?= base_url('assets/production/images/profil/') . $data['foto']; ?>" width="50px">
-              </div>
-              <div class="profile_info">
-                <span>Selamat Datang,<h2><?= $data['nama'];?></h2></span>
-              </div>
-            </div> -->
-            <!-- /menu profile quick info -->
 
             <br />
             <br />
@@ -48,7 +36,7 @@
               <div class="menu_section">
                 <h3>Data Latih</h3>
                 <ul class="nav side-menu">
-                  <li><a class="nav-link" href="<?php echo base_url('c_kategori')?>"><i class="fa fa-th-large"></i> Daftar Kategori</span></a></li>
+                  <!-- <li><a class="nav-link" href="<?php echo base_url('c_kategori')?>"><i class="fa fa-th-large"></i> Daftar Kategori</span></a></li> -->
                   <li><a class="nav-link" href="<?php echo base_url('c_datlat')?>"><i class="fa fa-table"></i> Daftar Data Latih</span></a></li>
                 </ul>
               </div>

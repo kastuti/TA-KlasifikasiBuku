@@ -12,7 +12,7 @@
                   </div>
                   <div class="x_content">
 
-                       <form action="">
+                       <form action="<?=base_url('c_profil/editadmin/');?>">
                          <!-- Default box -->
                          <div class="container">
                           <!-- <div class="card mb-5"> -->
@@ -34,7 +34,7 @@
                                 </tr>
                                   <tr>
                                   <td>Foto</td>
-                                  <td> <img src="<?= base_url('assets/production/images/profil/') . $data['foto'];?>" class="img-thumbnail"></td>
+                                  <td> <img src="<?= base_url('upload/profil/') . $data['foto'];?>" class="img-thumbnail"></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -42,10 +42,12 @@
                           <div class="form-group">
                             <label  class="col-md-12 control-label"></label>
                             <div class="col-md-12">
-                            <a href="<?=base_url('c_profil/ubah/' . $data['id_admin']);?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>Edit Profil</a>
+                            <button class="btn btn-success btn-sm" name="edit" type="submit"><i class="fa fa-edit"></i>Ubah Profil</button>
                              <!--  <button class="bnt btn-success btn-sm" name="edit" type="submit">
                                 <i class="fa fa-edit"></i> Edit Profil
                               </button> -->
+
+                               <!-- . $data['id_admin'] -->
                             </div>
                           </div>
 

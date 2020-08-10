@@ -11,7 +11,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action=""  method="post" action="<?php echo base_url(). 'c_datbuk/ubah'; ?>">
+                    <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url('c_datbuk/prosesEdit/' . $c_datbuk['id_buku']); ?>" enctype="multipart/form-data">
                       <input type="hidden" name="id" value="<?= $c_datbuk['id_buku']; ?>">
 
                       <div class="item form-group">
@@ -123,7 +123,6 @@
                           <!-- <button type="submit" value="upload" class="btn btn-success"><i class="fa fa-file m-right-xs"> Simpan</i></button> -->
                         </div>
                       </div>
-
                     </form>
                   </div>
                 </div>

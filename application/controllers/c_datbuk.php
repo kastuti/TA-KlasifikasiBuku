@@ -5,15 +5,10 @@ class C_datbuk extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
-        // konfigurasi helper & library
-        // $this->load->helper('url');
-        // $this->load->library('pagination');
+        $this->load->helper('url');
         $this->load->library('form_validation');
         $this->load->database();
         $this->load->model('m_datbuk');
-  //       if($this->session->userdata('status') != "login"){
-		// 	redirect(base_url("c_datlat"));
-		// }
     }
 
 	public function index()
@@ -105,31 +100,18 @@ class C_datbuk extends CI_Controller {
 		$isi['data']     = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
 		$isi['c_datbuk'] = $this->m_datbuk->getDatbukById($id);
 
-		$this->form_validation->set_rules('judul_buku', 'JudulBuku', 'required');
-		$this->form_validation->set_rules('edisi', 'Edisi', 'required');
-		$this->form_validation->set_rules('isbn', 'ISBN', 'required');
-		$this->form_validation->set_rules('penerbit', 'Penerbit', 'required');
-		$this->form_validation->set_rules('tahun_terbit', 'TahunTerbit', 'trim|required|numeric');
-		$this->form_validation->set_rules('deskripsi_fisik', 'DeskripsiFisik', 'required');
-		$this->form_validation->set_rules('bahasa', 'Bahasa', 'required');
-		$this->form_validation->set_rules('tempat_terbit', 'TempatTerbit', 'required');
-		$this->form_validation->set_rules('klasifikasi', 'Klasifikasi', 'required');
-		$this->form_validation->set_rules('sinopsis', 'Sinopsis', 'required');
-		$this->form_validation->set_rules('pengarang', 'Pengarang', 'required');
-		$this->form_validation->set_rules('cover', 'Cover', 'required');
-
-		if ($this->form_validation->run() == FALSE) {
-
-			$this->load->view('v_header',$isi);
-	        $this->load->view('v_menu',$isi);
-	        $this->load->view('v_topnav',$isi);
-			$this->load->view('datbuk/v_ubah_buku',$isi);
-	        $this->load->view('v_footer',$isi);
+		$this->load->view('v_header',$isi);
+	    $this->load->view('v_menu',$isi);
+	    $this->load->view('v_topnav',$isi);
+		$this->load->view('datbuk/v_ubah_buku',$isi);
+	    $this->load->view('v_footer',$isi);
 			
-		}else{
-			$this->m_datbuk->ubahDataBuku();
-			$this->session->set_flashdata('flash', 'Diubah');
-			redirect('c_datbuk');
-		}	
 	}
+
+	public function prosesEdit($id)
+    {
+        $this->m_datbuk->ubahDataBuku($id);
+            $this->session->set_flashdata('flash', 'Diubah');
+            redirect('c_datbuk');
+    }
 }

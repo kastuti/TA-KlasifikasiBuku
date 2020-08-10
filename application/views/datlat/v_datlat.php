@@ -22,12 +22,10 @@
                         <tr>
                           <th>No</th>
                           <th>ID</th>
-                          <th>Judul Buku </th>
-                          <th>Sinopsis</th>
+                          <th>Judul/Sinopsis Buku </th>
                           <th>Kategori</th>
-                          <!-- <th>Frekuensi</th> -->
-                          <!-- <th>Tanggal Dibuat</th> -->
-                          <!-- <th>Aksi</th> -->
+                          <th>Hasil</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
 
@@ -42,14 +40,13 @@
                         <tr class="table-primary">
                           <td><?php echo $no++;?></td>
                           <td><?php echo $row->id_datlat;?></td>
-                          <td><?php echo $row->judul_buku;?></td>
-                          <td><?php echo $row->sinopsis;?></td>
+                          <td><?php echo $row->js_buku;?></td>
                           <td><?php echo $row->kategori;?></td>
-                          <!-- <td><?php echo $row->frekuensi;?></td> -->
-                          <!-- <td><?php echo $row->tgl_dibuat;?></td> -->
-                          <!-- <td>
+                          <td><?php echo $row->hasil;?></td>
+                          <td>
+                          <a href="<?php echo base_url('c_datlat/processing/'.$row->id_datlat);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Process</i></a>
                           <a href="<?php echo base_url('c_datlat/hapus/'.$row->id_datlat);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
-                          </td> -->
+                          </td>
                         </tr>
                         <?php }?>
                       </tbody>
@@ -68,46 +65,29 @@
                 <div class="modal-body">
                   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url('c_datlat/simpan');?>" method="post">
                     <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="judul_buku">Judul Buku<span class="required">*</span></label>
-                        <div class="col-md-9 col-sm-9 ">
-                          <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control ">
+                      <label class="col-form-label col-md-4 col-sm-4 label-align" for="js_buku">Judul/Sinopsis Buku<span class="required">*</span></label>
+                        <div class="col-md-8 col-sm-8 ">
+                          <input type="text" id="js_buku" name="js_buku" required="required" class="form-control ">
                         </div>
                     </div>
                     <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="sinopsis">Sinopsis<span class="required">*</span></label>
-                        <div class="col-md-9 col-sm-9 ">
-                          <input type="text" id="sinopsis" name="sinopsis" required="required" class="form-control ">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="kategori">Kategori<span class="required">*</span></label>
-                        <div class="col-md-9 col-sm-9 ">
-                          <select class="select2_group form-control">
-                            <optgroup label="Computer science, information & general works">
-                              <option value="AK">Knowledge</option>
-                              <option value="HI">The book</option>
-                              <option value="AK">Systems</option>
-                              <option value="HI">Computer science</option>
-                              <option value="AK">Computer programming, programs, data, security</option>
-                              <option value="HI">Special computer methods</option>
-                            </optgroup>
-                            <optgroup label="Philosophy & psychology ">
-                            </optgroup>
-                            <optgroup label="Religion">
-                            </optgroup>
-                            <optgroup label="Social sciences">
-                            </optgroup>
-                            <optgroup label="Language">
-                            </optgroup>
+                      <label class="col-form-label col-md-4 col-sm-4 label-align" for="kategori">Kategori<span class="required">*</span></label>
+                        <div class="col-md-8 col-sm-8 ">
+                          <select class="form-control" name="kategori">
+                            <option>Pilih Kategori</option>
+                            <option value="000">Computer science, information, general works</option>
+                            <option value="100">Philosophy & psychology</option>
+                            <option value="200">Religion</option>
+                            <option value="300">Social sciences</option>
+                            <option value="400">Language</option>
+                            <option value="500">Science</option>
+                            <option value="600">Technology</option>
+                            <option value="700">Arts & recreation</option>
+                            <option value="800">Literature</option>
+                            <option value="900">History & geography</option>
                           </select>
                         </div>
                     </div>
-                    <!-- <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="frekuensi">Frekuensi<span class="required">*</span></label>
-                        <div class="col-md-9 col-sm-9 ">
-                          <input type="text" id="frekuensi" name="frekuensi" required="required" class="form-control ">
-                        </div>
-                    </div> -->
                     <div class="modal-footer">
                       <div class="ln_solid"></div>
                       <div class="item form-group">

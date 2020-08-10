@@ -9,7 +9,7 @@
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                     <span><?= $data['nama'];?></span>
-                    <img src="<?= base_url('assets/production/images/profil/') . $data['foto']; ?>">
+                    <img src="<?= base_url('upload/profil/') . $data['foto']; ?>">
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="<?php echo base_url('c_profil'); ?>"> Profil</a>

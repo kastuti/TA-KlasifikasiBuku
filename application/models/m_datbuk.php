@@ -2,6 +2,12 @@
  
 class M_datbuk extends CI_Model{	
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+	}
+
 	function get_data(){
 		return $this->db->get('tb_buku');
 	}
@@ -20,10 +26,10 @@ class M_datbuk extends CI_Model{
 		$this->db->delete($table);
 	}
 
-	function ubahDataBuku()
+	function ubahDataBuku($id)
 	{
 		$data = [
-			"js_buku" => $this->input->post('js_buku', true),
+			"judul_buku" => $this->input->post('judul_buku', true),
 			"edisi" => $this->input->post('edisi', true),
 			"isbn" => $this->input->post('isbn', true),
 			"penerbit" => $this->input->post('penerbit', true),
@@ -37,7 +43,7 @@ class M_datbuk extends CI_Model{
 			"cover" => $this->input->post('cover', true)
 		];
 
-		$this->db->where('id_buku', $this->input->post('id_buku'));
+		$this->db->where('id_buku', $id);
 		$this->db->update('tb_buku', $data);
 	}
 
