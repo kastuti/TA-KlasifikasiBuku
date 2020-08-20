@@ -7,7 +7,6 @@
               <a href="<?php echo base_url('c_dashboard') ?>" class="site_title">
                <img class="logo" src="<?php echo base_url();?>assets/production/images/icon7.png " alt="logo" style="position: left; width: 50px; height: 50px;" />
               <span>KLASIBU</span></a>
-              <!-- <img class="logo" src="<?php echo base_url();?>assets_login/img/logo1.png " alt="logo" style="position: center; width: 230px; height: 90px;" /> -->
             </div>
 
             <div class="clearfix"></div>
@@ -16,7 +15,7 @@
                 <img src="<?= base_url('upload/profil/') . $data['foto']; ?>" class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Selamat Datang,</span>
                 <h2><?= $data['nama'];?></h2>
               </div>
             </div>
@@ -34,18 +33,17 @@
               </div>
 
               <div class="menu_section">
-                <h3>Data Latih</h3>
+                <h3>Klasifikasi Buku</h3>
                 <ul class="nav side-menu">
-                  <!-- <li><a class="nav-link" href="<?php echo base_url('c_kategori')?>"><i class="fa fa-th-large"></i> Daftar Kategori</span></a></li> -->
-                  <li><a class="nav-link" href="<?php echo base_url('c_datlat')?>"><i class="fa fa-table"></i> Daftar Data Latih</span></a></li>
+                  <li><a class="nav-link" href="<?php echo base_url('c_datlat')?>"><i class="fa fa-table"></i> Data Latih</span></a></li>
+                  <li><a class="nav-link" href="<?php echo base_url('c_klasbuk')?>"><i class="fa fa-bar-chart"></i> Data Uji</a></li>
                 </ul>
               </div>
 
               <div class="menu_section">
                 <h3>Data Buku</h3>
                 <ul class="nav side-menu">
-                  <li><a class="nav-link" href="<?php echo base_url('c_klasbuk')?>"><i class="fa fa-bar-chart"></i> Klasifikasi Buku</a></li>
-                  <li><a class="nav-link" href="<?php echo base_url('c_datbuk')?>"><i class="fa fa-book"></i> Daftar Buku</a></li>
+                  <li><a class="nav-link" href="<?php echo base_url('c_datbuk')?>"><i class="fa fa-book"></i> Data Buku</a></li>
                 </ul>
               </div>
             </div>

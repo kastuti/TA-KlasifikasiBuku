@@ -11,116 +11,88 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url('c_datbuk/prosesEdit/' . $c_datbuk['id_buku']); ?>" enctype="multipart/form-data">
-                      <input type="hidden" name="id" value="<?= $c_datbuk['id_buku']; ?>">
-
+                    <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url('c_datbuk/prosesEdit') ?>" enctype="multipart/form-data">
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="judul_buku">Judul Buku<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2" for="judul_buku">Judul Buku<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control" value="<?= $c_datbuk['judul_buku']; ?>">
+                        <div class="col-md-10 col-sm-10">
+                          <input type="hidden" name="id_buku" value="<?= $datbuk['id_buku']; ?>">
+                          <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control" value="<?= $datbuk['judul_buku']; ?>">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="edisi">Edisi<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2" for="isbn">ISBN<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="edisi" name="edisi" required="required" class="form-control" value="<?= $c_datbuk['edisi']; ?>">
+                        <div class="col-md-10 col-sm-10 ">
+                          <input type="text" id="isbn" name="isbn" required="required" class="form-control" value="<?= $datbuk['isbn']; ?>">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="isbn">ISBN<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2">Penerbit<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="isbn" name="isbn" required="required" class="form-control" value="<?= $c_datbuk['isbn']; ?>">
+                        <div class="col-md-10 col-sm-10 ">
+                          <input id="penerbit" name="penerbit" class="form-control" required="required" type="text" value="<?= $datbuk['penerbit']; ?>">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Penerbit<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2">Tahun Terbit<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="penerbit" name="penerbit" class="form-control" required="required" type="text" value="<?= $c_datbuk['penerbit']; ?>">
+                        <div class="col-md-10 col-sm-10 ">
+                          <input id="tahun_terbit" name="tahun_terbit" class="form-control" required="required" type="text" value="<?= $datbuk['tahun_terbit']; ?>">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Tahun Terbit<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2 ">Tempat Terbit<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="tahun_terbit" name="tahun_terbit" class="form-control" required="required" type="text" value="<?= $c_datbuk['tahun_terbit']; ?>">
+                        <div class="col-md-10 col-sm-10 ">
+                          <input id="tempat_terbit" name="tempat_terbit" class="form-control" required="required" type="text" value="<?= $datbuk['tempat_terbit']; ?>">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Deskripsi Fisik<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2 ">Kategori<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="deskripsi_fisik" name="deskripsi_fisik" class="form-control" required="required" type="text" value="<?= $c_datbuk['deskripsi_fisik']; ?>">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Bahasa<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="bahasa" name="bahasa" class="form-control" required="required" type="text" value="<?= $c_datbuk['bahasa']; ?>">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Tempat Terbit<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="tempat_terbit" name="tempat_terbit" class="form-control" required="required" type="text" value="<?= $c_datbuk['tempat_terbit']; ?>">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Klasifikasi<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <select class="select2_group form-control" name="klasifikasi" id="klasifikasi">
-                            <optgroup label="Computer science, information & general works">
-                              <option value="AK">Knowledge</option>
-                              <option value="HI">The book</option>
-                              <option value="AK">Systems</option>
-                              <option value="HI">Computer science</option>
-                              <option value="AK">Computer programming, programs, data, security</option>
-                              <option value="HI">Special computer methods</option>
-                            </optgroup>
-                            <optgroup label="Philosophy & psychology ">
-                            </optgroup>
-                            <optgroup label="Religion">
-                            </optgroup>
-                            <optgroup label="Social sciences">
-                            </optgroup>
-                            <optgroup label="Language">
-                            </optgroup>
+                        <div class="col-md-10 col-sm-10 ">
+                          <select class="form-control" name="klasifikasi">
+                            <option>Pilih Kategori</option>
+                            <option value="000">Computer science, information, general works</option>
+                            <option value="100">Philosophy & psychology</option>
+                            <option value="200">Religion</option>
+                            <option value="300">Social sciences</option>
+                            <option value="400">Language</option>
+                            <option value="500">Science</option>
+                            <option value="600">Technology</option>
+                            <option value="700">Arts & recreation</option>
+                            <option value="800">Literature</option>
+                            <option value="900">History & geography</option>
                           </select>
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Sinopsis<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2 ">Sinopsis<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="klasifikasi" name="klasifikasi" class="form-control" required="required" type="text" value="<?= $c_datbuk['sinopsis']; ?>">
+                        <div class="col-md-10 col-sm-10 ">
+                          <input id="sinopsis" name="sinopsis" class="form-control" required="required" type="text" value="<?= $datbuk['sinopsis']; ?>">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Pengarang<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2 ">Pengarang<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="klasifikasi" name="klasifikasi" class="form-control" required="required" type="text" value="<?= $c_datbuk['pengarang']; ?>">
+                        <div class="col-md-10 col-sm-10 ">
+                          <input id="pengarang" name="pengarang" class="form-control" required="required" type="text" value="<?= $datbuk['pengarang']; ?>">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Cover<span class="required">*</span>
+                        <label class="col-form-label col-md-2 col-sm-2">Cover<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="klasifikasi" name="klasifikasi" class="form-control" required="required" type="file" value="<?= $c_datbuk['cover']; ?>">
+                        <div class="col-md-10 col-sm-10 ">
+                          <input id="cover" name="cover" class="form-control" required="required" type="file" value="<?= $datbuk['cover']; ?>">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 offset-md-3">
+                        <div class="col-md-12 col-sm-12">
                           <a href="<?php echo base_url('c_datbuk')?>" class="btn btn-danger btn-sm"><i class="fa fa-remove m-right-xs"> Batal</i></a>
                           <button type="submit" name="ubah" class="btn btn-success btn-sm"><i class="fa fa-file m-right-xs"> Simpan</i></button>
-                          <!-- <button type="submit" value="upload" class="btn btn-success"><i class="fa fa-file m-right-xs"> Simpan</i></button> -->
                         </div>
                       </div>
                     </form>

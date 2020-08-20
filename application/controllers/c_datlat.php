@@ -1,15 +1,10 @@
-<?php
+<?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_datlat extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
-        // konfigurasi helper & library
-        // $this->load->helper('url');
-        // $this->load->library('pagination');
-        // $this->load->library('form_validation');
-        // $this->load->database();
         $this->load->model('m_datlat');
   	}
   	
@@ -57,11 +52,9 @@ class C_datlat extends CI_Controller {
 
 		$resultToken=$this->tokenizing($hasil);
 		$resultFiltering=$this->filtering($resultToken);
-
 		
 		$fixHasil=implode(' ', $resultFiltering);
 		$resultSteming=$this->steming($fixHasil);
-
 		
 		$id_datlat = array(
 		 	'id_datlat' => $id,
@@ -86,43 +79,27 @@ class C_datlat extends CI_Controller {
 		$stopword=explode(' ', $getDbStopword['kata']);
 
 		$hasil=[];
-   foreach ($data as $key => $value) {
-            
-        foreach($stopword as $a => $item){
-
-            
-            if($item==$value){
-                $hasil[]=$value;
+   		foreach ($data as $key => $value) {
+        	foreach($stopword as $a => $item){
+            	if($item==$value){
+                	$hasil[]=$value;
             }else{
                
             }
-        }
-        
-      
-   }
-
-
-   return str_replace($hasil, " ", $data);
-   
-
-
+        	}
+   		}
+   		return str_replace($hasil, " ", $data);
 	}
-
 
 	public function steming($filter)
 	{
 		$data=$this->db->query("SELECT * FROM tb_baseword")->result();
-		// $parabot = array("Meja Komputer", "Tempat Tidur", "Korsi", "Kompor", "Ember", "Sapu");
-		// print_r($parabot);exit();
 
 		foreach ($data as $key => $value) {
-			// $kata=json_decode($value->kata);
 			$data=explode(',', $value->kata);
-
 			foreach ($data as $key => $item) {
 				$filter = str_replace($data[$key], $value->kata_dasar, $filter);
 			}
-
 		}
 		return $filter;
 	}
@@ -132,5 +109,4 @@ class C_datlat extends CI_Controller {
 		$this->m_datlat->delete_data($where,'tb_datlat');
 		redirect('c_datlat');
 	}
-
 }

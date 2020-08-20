@@ -28,39 +28,4 @@ class M_profil extends CI_Model{
 		redirect('c_profil');
 
 	}
- 
-	// function ubahProfil($id)
-	// {
-	// 	$data = [
-	// 		"email" => $this->input->post('email', true),
-	// 		"nama" => $this->input->post('nama', true),
-	// 		"password" => $this->input->post('password', true),
-	// 		// "foto" => $this->input->post('foto', true),
-
-	// 		$upload_foto = $_FILES['foto']['nama'];
-
-	// 		if ($upload_foto) {
-	// 			$config['allowed_types'] = 'gif|jpg|png';
-	// 			$config['max_size']     = '2048';
-	// 			$config['upload_path'] = './upload/';
-
-	// 			$this->load->library('upload', $config);
-
-	// 			if ($this->upload->do_upload('foto'))
-	// 			{
-	// 				$new_foto = $this->upload->data('file_name');
-	// 				$this->db->set('foto', $new_foto);
-	// 			}
-	// 			else
-	// 			{
-	// 				echo $this->upload->display_errors();
-	// 			}
-
-	// 		}
-	// 	];
-
-	// 	$this->db->where('id_admin', $id);
-	// 	$this->db->update('tb_admin', $data);
-	// }
-
 }

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_profil extends CI_Controller {
 
-	function __construct(){
+    function __construct(){
         parent::__construct();
         $this->load->helper('url');
         $this->load->database();
@@ -13,8 +13,8 @@ class C_profil extends CI_Controller {
 
     public function index(){
 
-    	$isi['content'] 	= 'profil/v_profil';
-		$isi['judul'] 		= 'Profil';
+        $isi['content']     = 'profil/v_profil';
+        $isi['judul']       = 'Profil';
         $isi['data']        = $this->db->get_where('tb_admin', ['email' =>
                               $this->session->userdata('email')])->row_array();
 
@@ -24,12 +24,11 @@ class C_profil extends CI_Controller {
         $this->load->view('profil/v_profil',$isi);
         $this->load->view('v_footer',$isi);
     
-	}
+    }
 
-    public function editadmin()
+    public function editadmin($id_admin)
     {
         $isi['data'] = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
-
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 
         if ($this->form_validation->run() == false) {
@@ -39,65 +38,37 @@ class C_profil extends CI_Controller {
             $this->load->view('profil/v_ubah_profil',$isi);
             $this->load->view('v_footer',$isi);  
         }else{
+
+            $config['upload_path'] = './upload/profil/';
+            $config['allowed_types'] = 'pdf|img|doc|docx|jpg|png';
+            $config['overwrite']            = true;
+            $config['max_size']             = 1024; // 1MB
+
+            $this->load->library('upload', $config,'kkupload'); 
+            $this->kkupload->initialize($config,'kkupload');
+            $this->kkupload->do_upload('foto');
+            $result1 = $this->kkupload->data();
+
             $email = $this->input->post('email');
             $password = $this->input->post('password');
             $nama = $this->input->post('nama');
+            $id_admin = $this->input->post('id_admin');
+            
 
-            //  jika ada gambar yang diupload
-            $upload_image = $_FILES['foto']['nama'];
+            $data = [
+                'email' => $email,
+                'nama' => $nama,
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'id_admin' => $id_admin,
+                'foto' => $result1['file_name'],
+            ];
 
-            if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']     = '2048';
-                $config['upload_path'] = './upload';
-
-                $this->load->library('upload', $config);
-
-                if ($this->upload->do_upload('foto'))
-                {
-                    $new_image = $this->upload->data('file_name');
-                    $this->db->set('foto', $new_image);
-                }
-                else
-                {
-                    echo $this->upload->display_errors();
-                }
-
-            }
-
-            $this->db->set('nama', $nama);
-            $this->db->where('email', $email);
-            $this->db->where('password', $password);
-            $this->db->update('tb_admin');
-
+            $this->db->where('id_admin', $data['id_admin']);
+            $this->db->update('tb_admin', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data profil telah di edit! <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>');
             redirect('c_profil');
-
         }
     }
-
-    // public function ubah($id)
-    // {
-    //     $isi['content'] = 'profil/v_ubah_profil';
-    //     $isi['judul']   = 'Edit Data Profil';
-    //     $isi['data']        = $this->db->get_where('tb_admin', ['email' =>
-    //                           $this->session->userdata('email')])->row_array();
-    //     $isi['c_profil'] = $this->m_profil->getProfilById($id);
-
-    //         $this->load->view('v_header',$isi);
-    //         $this->load->view('v_menu',$isi);
-    //         $this->load->view('v_topnav',$isi);
-    //         $this->load->view('profil/v_ubah_profil',$isi);
-    //         $this->load->view('v_footer',$isi);  
-    // }
-
-    // public function prosesEdit($id)
-    // {
-    //     $this->m_profil->ubahProfil($id);
-    //         $this->session->set_flashdata('flash', 'Diubah');
-    //         redirect('c_profil');
-    // }
-
 }

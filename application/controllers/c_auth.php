@@ -124,10 +124,10 @@ class C_auth extends CI_Controller
 	}
 
 	function sandi_baru($id_admin) {
-	  $isi=array(
-	    'password'=>md5($this->input->post('password'))
-	    );
-	  $this->m_auth->ubah_sandi($isi,$id_admin);
+	  $data = [
+	  	'password'=>password_hash($this->input->post('password1'), PASSWORD_DEFAULT)
+	  ];
+	  $this->m_auth->ubah_sandi($data,$id_admin);
 	  $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>Kata Sandi berhasil diubah.
 	  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 	  <span aria-hidden='true'>&times;</span>

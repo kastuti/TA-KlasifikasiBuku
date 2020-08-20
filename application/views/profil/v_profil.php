@@ -1,5 +1,3 @@
-        
-
         <div class="right_col" role="main">
           <div class="">
             <div class="row">
@@ -34,7 +32,7 @@
                                 </tr>
                                   <tr>
                                   <td>Foto</td>
-                                  <td> <img src="<?= base_url('upload/profil/') . $data['foto'];?>" class="img-thumbnail"></td>
+                                  <td> <img src="<?= base_url('upload/profil/') . $data['foto'];?>" class="img-thumbnail" width="100px" heihg="100px"></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -42,12 +40,7 @@
                           <div class="form-group">
                             <label  class="col-md-12 control-label"></label>
                             <div class="col-md-12">
-                            <button class="btn btn-success btn-sm" name="edit" type="submit"><i class="fa fa-edit"></i>Ubah Profil</button>
-                             <!--  <button class="bnt btn-success btn-sm" name="edit" type="submit">
-                                <i class="fa fa-edit"></i> Edit Profil
-                              </button> -->
-
-                               <!-- . $data['id_admin'] -->
+                            <a href="<?=base_url('c_profil/editadmin/' . $data['id_admin'])?>" class="btn btn-success btn-sm"><i class="fa fa-edit">Ubah Profil</i></a>
                             </div>
                           </div>
 

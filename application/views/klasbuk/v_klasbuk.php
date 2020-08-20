@@ -6,7 +6,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Klasifikasi Buku</h2>
+                    <h2>Data Uji</h2>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_add_new"><i class="fa fa-plus m-right-xs"> Tambah Data</i></a></span>
                     <div class="clearfix"></div>
                   </div>
@@ -15,12 +15,11 @@
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
                     <p class="text-muted font-13 m-b-30">
-                      Data ini merupakan data hasil klasifikasi buku yang telah melalui proses pengecekan pada Data Latih.
+                      Data uji merupakan data untuk proses pengujian guna keperluan klasifikasi.
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
-                          <th>No</th>
                           <th>ID</th>
                           <th>Judul/Sinopsis Buku</th>
                           <th>Hasil</th>
@@ -29,13 +28,10 @@
 
                       <tbody>
                         <?php
-                          $no=0;
-                          $no++;
                           foreach ($klasbuk as $row){
                         ?>
 
                         <tr class="table-primary">
-                          <td><?php echo $no++;?></td>
                           <td><?php echo $row->id_klasbuk;?></td>
                           <td><?php echo $row->judul_buku;?></td>
                           <td><?php echo $row->hasil;?></td>
@@ -52,12 +48,12 @@
               <div class="modal-dialog">
               <div class="modal-content">
               <div class="modal-header">
-                  <h4 class="modal-title" id="myModalLabel">Tambah Klasifikasi Buku</h4>
+                  <h4 class="modal-title" id="myModalLabel">Tambah Data Uji</h4>
               </div>
                 <div class="modal-body">
                   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url('c_klasbuk/simpan');?>" method="post">
                     <div class="item form-group">
-                      <label class="col-form-label col-md-4 col-sm-4 label-align" for="judul_buku">Judul/Sinopsis Buku<span class="required">*</span>
+                      <label class="col-form-label col-md-4 col-sm-4" for="judul_buku">Judul/Sinopsis Buku<span class="required">*</span>
                       </label>
                         <div class="col-md-8 col-sm-8 ">
                           <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control ">
@@ -66,7 +62,7 @@
                     <div class="modal-footer">
                     <div class="ln_solid"></div>
                       <div class="item form-group">
-                        <div class="col-md-12 col-sm-12 offset-md-12">
+                        <div class="col-md-12 col-sm-12">
                           <button class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true"><i class="fa fa-remove m-right-xs"> Batal</i></button>
                           <button class="btn btn-primary btn-sm" type="reset"><i class="fa fa-eraser m-right-xs"> Reset</i></button>
                           <button type="submit" value="upload" class="btn btn-success btn-sm"><i class="fa fa-file m-right-xs"> Simpan</i></button>

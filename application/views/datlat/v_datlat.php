@@ -6,7 +6,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Daftar Data Latih</h2>
+                    <h2>Data Latih</h2>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_add_new"><i class="fa fa-plus m-right-xs"> Tambah Data</i></a></span>
                     <div class="clearfix"></div>
                   </div>
@@ -15,12 +15,11 @@
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
                     <p class="text-muted font-13 m-b-30">
-                      Data latih merupakan data yang berisi daftar buku yang ditambahkan melalui proses pelatihan.
+                      Data latih merupakan data yang digunakan untuk proses pelatihan.
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
-                          <th>No</th>
                           <th>ID</th>
                           <th>Judul/Sinopsis Buku </th>
                           <th>Kategori</th>
@@ -32,19 +31,16 @@
 
                       <tbody>
                         <?php
-                          $no=0;
-                          $no++;
                           foreach ($datlat as $row){
                         ?>
 
                         <tr class="table-primary">
-                          <td><?php echo $no++;?></td>
                           <td><?php echo $row->id_datlat;?></td>
                           <td><?php echo $row->js_buku;?></td>
                           <td><?php echo $row->kategori;?></td>
                           <td><?php echo $row->hasil;?></td>
                           <td>
-                          <a href="<?php echo base_url('c_datlat/processing/'.$row->id_datlat);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Process</i></a>
+                          <a href="<?php echo base_url('c_datlat/processing/'.$row->id_datlat);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Proses Teks</i></a>
                           <a href="<?php echo base_url('c_datlat/hapus/'.$row->id_datlat);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
                           </td>
                         </tr>
@@ -65,13 +61,13 @@
                 <div class="modal-body">
                   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url('c_datlat/simpan');?>" method="post">
                     <div class="item form-group">
-                      <label class="col-form-label col-md-4 col-sm-4 label-align" for="js_buku">Judul/Sinopsis Buku<span class="required">*</span></label>
+                      <label class="col-form-label col-md-4 col-sm-4" for="js_buku">Judul/Sinopsis Buku<span class="required">*</span></label>
                         <div class="col-md-8 col-sm-8 ">
                           <input type="text" id="js_buku" name="js_buku" required="required" class="form-control ">
                         </div>
                     </div>
                     <div class="item form-group">
-                      <label class="col-form-label col-md-4 col-sm-4 label-align" for="kategori">Kategori<span class="required">*</span></label>
+                      <label class="col-form-label col-md-4 col-sm-4" for="kategori">Kategori<span class="required">*</span></label>
                         <div class="col-md-8 col-sm-8 ">
                           <select class="form-control" name="kategori">
                             <option>Pilih Kategori</option>
@@ -91,7 +87,7 @@
                     <div class="modal-footer">
                       <div class="ln_solid"></div>
                       <div class="item form-group">
-                        <div class="col-md-12 col-sm-12 offset-md-12"> 
+                        <div class="col-md-12 col-sm-12"> 
                           <button class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true"><i class="fa fa-remove m-right-xs"> Batal</i></button>
                           <button class="btn btn-primary btn-sm" type="reset"><i class="fa fa-eraser m-right-xs"> Reset</i></button>
                           <button type="submit" value="upload" class="btn btn-success btn-sm"><i class="fa fa-file m-right-xs"> Simpan</i></button>

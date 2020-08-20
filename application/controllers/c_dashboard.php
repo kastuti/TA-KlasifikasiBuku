@@ -5,13 +5,11 @@ class C_dashboard extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
-        // login_in_admin();
         $this->load->model('m_dashboard');
     }
 
     public function index(){
 		$isi['data']        = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
-        $isi['total_kategori'] =  $this->m_dashboard->total_kategori();
         $isi['total_datlat'] =  $this->m_dashboard->total_datlat();
         $isi['total_klasbuk'] =  $this->m_dashboard->total_klasbuk();
         $isi['total_buku'] =  $this->m_dashboard->total_buku();

@@ -7,18 +7,26 @@ class M_datbuk extends CI_Model{
 		parent::__construct();
 		$this->load->database();
 	}
-
-	function get_data(){
-		return $this->db->get('tb_buku');
-	}
-
-	function getDatbukById($id)
+	
+	public function input($data)
 	{
-		return $this->db->get_where('tb_buku', ['id_buku' => $id])->row_array();
+		$this->db->insert('tb_buku', $data);
 	}
- 
-	function insert_data($data,$table){
-		$this->db->insert($table,$data);
+
+	public function tampil()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_buku');
+		$result = $this->db->get();
+		return $result->result();
+	}
+
+	public function bukuId($where)
+	{
+		$this->db->from('tb_buku');
+		$this->db->where('id_buku', $where);
+		$result = $this->db->get();
+		return $result->result();
 	}	
 
 	function delete_data($where,$table){
@@ -26,24 +34,9 @@ class M_datbuk extends CI_Model{
 		$this->db->delete($table);
 	}
 
-	function ubahDataBuku($id)
+	function update_data($data)
 	{
-		$data = [
-			"judul_buku" => $this->input->post('judul_buku', true),
-			"edisi" => $this->input->post('edisi', true),
-			"isbn" => $this->input->post('isbn', true),
-			"penerbit" => $this->input->post('penerbit', true),
-			"tahun_terbit" => $this->input->post('tahun_terbit', true),
-			"deskripsi_fisik" => $this->input->post('deskripsi_fisik', true),
-			"bahasa" => $this->input->post('bahasa', true),
-			"tempat_terbit" => $this->input->post('tempat_terbit', true),
-			"klasifikasi" => $this->input->post('klasifikasi', true),
-			"sinopsis" => $this->input->post('sinopsis', true),
-			"pengarang" => $this->input->post('pengarang', true),
-			"cover" => $this->input->post('cover', true)
-		];
-
-		$this->db->where('id_buku', $id);
+		$this->db->where('id_buku', $id_buku);
 		$this->db->update('tb_buku', $data);
 	}
 
