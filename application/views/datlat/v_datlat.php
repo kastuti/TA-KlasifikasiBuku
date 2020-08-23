@@ -23,7 +23,7 @@
                           <th>ID</th>
                           <th>Judul/Sinopsis Buku </th>
                           <th>Kategori</th>
-                          <th>Hasil</th>
+                          <th>Hasil Pemrosesan Teks</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
@@ -40,7 +40,7 @@
                           <td><?php echo $row->kategori;?></td>
                           <td><?php echo $row->hasil;?></td>
                           <td>
-                          <a href="<?php echo base_url('c_datlat/processing/'.$row->id_datlat);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Proses Teks</i></a>
+                          <a href="<?php echo base_url('c_datlat/processing/'.$row->id_datlat);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Proses</i></a>
                           <a href="<?php echo base_url('c_datlat/hapus/'.$row->id_datlat);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
                           </td>
                         </tr>

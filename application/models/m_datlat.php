@@ -23,11 +23,11 @@ class M_datlat extends CI_Model{
 	{
 		$this->db->where($id_datlat);
 		$this->db->update('tb_datlat',$data);
-
 	}
 
 	function delete_data($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+
 }

@@ -22,7 +22,9 @@
                         <tr>
                           <th>ID</th>
                           <th>Judul/Sinopsis Buku</th>
-                          <th>Hasil</th>
+                          <th>Hasil Pemrosesan Teks</th>
+                          <th>Hasil Klasifikasi</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
 
@@ -33,9 +35,14 @@
 
                         <tr class="table-primary">
                           <td><?php echo $row->id_klasbuk;?></td>
-                          <td><?php echo $row->judul_buku;?></td>
-                          <td><?php echo $row->hasil;?></td>
-                        </tr>
+                          <td><?php echo $row->js_buku;?></td>
+                          <td><?php echo $row->hasil1;?></td>
+                          <td><?php echo $row->hasil2;?></td>
+                          <td>
+                            <a href="<?php echo base_url('c_klasbuk/processing/'.$row->id_klasbuk);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Proses</i></a>
+                            <a href="<?php echo base_url('c_klasbuk/hapus/'.$row->id_klasbuk);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
+                          </td>
+                          </tr>
                         <?php }?>
                       </tbody>
                     </table>
@@ -53,10 +60,10 @@
                 <div class="modal-body">
                   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url('c_klasbuk/simpan');?>" method="post">
                     <div class="item form-group">
-                      <label class="col-form-label col-md-4 col-sm-4" for="judul_buku">Judul/Sinopsis Buku<span class="required">*</span>
+                      <label class="col-form-label col-md-4 col-sm-4" for="js_buku">Judul/Sinopsis Buku<span class="required">*</span>
                       </label>
                         <div class="col-md-8 col-sm-8 ">
-                          <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control ">
+                          <input type="text" id="js_buku" name="js_buku" required="required" class="form-control ">
                         </div>
                     </div>
                     <div class="modal-footer">

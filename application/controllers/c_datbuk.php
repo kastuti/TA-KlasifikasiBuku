@@ -51,7 +51,7 @@ class C_datbuk extends CI_Controller {
 				'klasifikasi' => $klasifikasi,
 				'sinopsis' => $sinopsis,
 				'pengarang' => $pengarang,
-				'cover' => 'default_cover.png'
+				'cover' => 'cover.png'
         	);
         	$this->m_datbuk->input($data);
         	redirect('c_datbuk');

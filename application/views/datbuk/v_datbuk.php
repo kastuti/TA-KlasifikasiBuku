@@ -26,7 +26,7 @@
                           <th>Penerbit</th>
                           <th>Tahun Terbit</th>
                           <th>Tempat Terbit</th>
-                          <th>Klasifikasi</th>
+                          <th>Kategori</th>
                           <th>Sinopsis</th>
                           <th>Pengarang</th>
                           <th>Cover</th>

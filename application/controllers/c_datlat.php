@@ -39,7 +39,7 @@ class C_datlat extends CI_Controller {
 			'js_buku' => $js_buku,
 			'kategori' => $kategori,
 			);
-		
+
 		$this->m_datlat->insert_data($data,'tb_datlat');
 		redirect('c_datlat');
 	}
@@ -49,6 +49,29 @@ class C_datlat extends CI_Controller {
 		$datlat	 = $this->m_datlat->get_dataId($id);
 		$js_buku = $datlat['js_buku'];
 		$hasil   = strtolower(trim($js_buku));
+		$hasil = str_replace("'", " ", $hasil);
+ 
+	    $hasil = str_replace("-", " ", $hasil);
+	    $hasil = str_replace(")", " ", $hasil);
+	    $hasil = str_replace("(", " ", $hasil);
+	 
+	    $hasil = str_replace("\"", " ", $hasil);
+	 
+	    $hasil = str_replace("/", " ", $hasil);
+	 
+	    $hasil = str_replace("=", " ", $hasil);
+	 
+	    $hasil = str_replace(".", " ", $hasil);
+	 
+	    $hasil = str_replace(",", " ", $hasil);
+	 
+	    $hasil = str_replace(":", " ", $hasil);
+	 
+	    $hasil = str_replace(";", " ", $hasil);
+	 
+	    $hasil = str_replace("!", " ", $hasil);
+	 
+	    $hasil = str_replace("?", " ", $hasil);
 
 		$resultToken=$this->tokenizing($hasil);
 		$resultFiltering=$this->filtering($resultToken);
