@@ -40,4 +40,11 @@ class M_datbuk extends CI_Model{
 		$this->db->update('tb_buku', $data);
 	}
 
+	public function tampilBuku_Excel()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_buku');
+		return $this->db->get();
+	}
+
 }

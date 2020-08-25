@@ -57,14 +57,36 @@ class C_klasbuk extends CI_Controller {
 		$js_buku = $klasbuk['js_buku'];
 		$hasil   = strtolower(trim($js_buku));
 
+		$hasil = str_replace("'", " ", $hasil);
+	    $hasil = str_replace("-", " ", $hasil);
+	    $hasil = str_replace(")", " ", $hasil);
+	    $hasil = str_replace("(", " ", $hasil);
+	    $hasil = str_replace("\"", " ", $hasil);
+	    $hasil = str_replace("/", " ", $hasil);
+	    $hasil = str_replace("=", " ", $hasil);
+	    $hasil = str_replace(".", " ", $hasil);
+	    $hasil = str_replace(",", " ", $hasil);
+	    $hasil = str_replace(":", " ", $hasil);
+	    $hasil = str_replace(";", " ", $hasil);
+	    $hasil = str_replace("!", " ", $hasil);
+	    $hasil = str_replace("?", " ", $hasil);
+	    $hasil = str_replace("0", " ", $hasil);
+	    $hasil = str_replace("1", " ", $hasil);
+	    $hasil = str_replace("2", " ", $hasil);
+	    $hasil = str_replace("3", " ", $hasil);
+	    $hasil = str_replace("4", " ", $hasil);
+	    $hasil = str_replace("5", " ", $hasil);
+	    $hasil = str_replace("6", " ", $hasil);
+	    $hasil = str_replace("7", " ", $hasil);
+	    $hasil = str_replace("8", " ", $hasil);
+	    $hasil = str_replace("9", " ", $hasil);
+
 		$resultToken=$this->tokenizing($hasil);
 		$resultFiltering=$this->filtering($resultToken);
 		
 		$fixHasil=implode(' ', $resultFiltering);
 		$resultSteming=$this->steming($fixHasil);
-		// var_dump($resultSteming);exit();
-
-		// $this->classification($resultSteming);
+		
 
 		// mencari priors
 		$all_data = $this->m_datlat->get_data()->result();
@@ -188,71 +210,5 @@ class C_klasbuk extends CI_Controller {
 			}
 		}
 		return $filter;
-	}
-
-
-	public function classification($text)
-	{
-		// $frequencyWord=[];
-		// $countWord=[];
-		// // $find=explode(' ', $text);
-		// $word=array_filter(explode(' ',$text));
-		
-		// // var_dump($word);exit();
-		// foreach ($word as $key => $value) {
-		// 	// var_dump();exit();
-		// 	// echo substr_count($text, $value)."<br>";
-		// 	$frequencyWord[]=[
-		// 		"word" => $value,
-		// 		"count" => substr_count($text, $value)
-		// 	];
-		// 	$countWord[]=[
-		// 	 substr_count($text, $value)
-		// 	];
-		// }
-
-		// $max=max($countWord);
-
-		// // var_dump($max);exit();
-
-		// // echo "<pre>".print_r($frequencyWord)."</pre>";
-		// $hasil="";
-
-		// // echo $hasil;
-		// $i=0;
-		
-		// foreach ($frequencyWord as $key => $value) {
-		// 	if($value['count'] == $max[0]){
-		// 		$hasil= $value['word'];
-		// 	}
-			
-		// }
-
-		// // echo $hasil;
-		
-
-
-		$dataKat=$this->db->query("select * from tb_datlat")->result();
-		$frequencyWord=[];
-		foreach ($dataKat as $key => $item) {
-			$word=array_filter(explode(' ',$item->hasil));
-		
-		// var_dump($word);exit();
-		foreach ($word as $key => $value) {
-			// var_dump();exit();
-			// echo substr_count($text, $value)."<br>";
-			$frequencyWord[]=[
-				"word" => $value,
-				"Kategori" => $item->kategori,
-				"count" => substr_count($text, $value)
-				
-			];
-			
-		}
-		}
-
-		echo "<pre>".print_r($frequencyWord)."</pre>";
-
-
 	}
 }
