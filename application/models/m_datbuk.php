@@ -47,4 +47,12 @@ class M_datbuk extends CI_Model{
 		return $this->db->get();
 	}
 
+	public function getKlasbuk()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_klasbuk');
+		$result = $this->db->get();
+		return $result->result();
+	}	
+
 }

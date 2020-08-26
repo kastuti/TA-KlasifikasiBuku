@@ -39,8 +39,9 @@
                           <td><?php echo $row->hasil1;?></td>
                           <td><?php echo $row->hasil2;?></td>
                           <td>
-                            <a href="<?php echo base_url('c_klasbuk/processing/'.$row->id_klasbuk);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Proses</i></a>
-                            <a href="<?php echo base_url('c_klasbuk/hapus/'.$row->id_klasbuk);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
+                            <a href="<?php echo base_url('c_klasbuk/edit/'.$row->id_klasbuk);?>" class="btn btn-primary btn-sm"><i class="fa fa-edit m-right-xs"> Ubah</i></a>
+                            <a href="<?php echo base_url('c_klasbuk/hapus/'.$row->id_klasbuk);?>" class="btn btn-danger btn-sm" onClick="return confirm('Apakah Anda yakin ingin menghapus?')"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
+                            <a href="<?php echo base_url('c_klasbuk/processing/'.$row->id_klasbuk);?>" class="btn btn-info btn-sm"><i class="fa fa-retweet m-right-xs"> Proses</i></a>
                           </td>
                           </tr>
                         <?php }?>

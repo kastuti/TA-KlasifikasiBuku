@@ -16,4 +16,8 @@ class M_dashboard extends CI_Model
 	{
 		return $this->db->get('tb_buku')->num_rows();
 	}
+	public function total_admin()
+	{
+		return $this->db->get('tb_admin')->num_rows();
+	}
 }

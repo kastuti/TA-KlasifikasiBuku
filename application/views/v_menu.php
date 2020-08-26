@@ -37,6 +37,7 @@
                 <ul class="nav side-menu">
                   <li><a class="nav-link" href="<?php echo base_url('c_datlat')?>"><i class="fa fa-table"></i> Data Latih</span></a></li>
                   <li><a class="nav-link" href="<?php echo base_url('c_klasbuk')?>"><i class="fa fa-bar-chart"></i> Data Uji</a></li>
+                  <li><a class="nav-link" href="<?php echo base_url('c_perhitungan')?>"><i class="fa fa-bar-chart"></i> Hasil Perhitungan</a></li>
                 </ul>
               </div>
 

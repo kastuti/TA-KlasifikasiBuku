@@ -23,6 +23,7 @@ class C_datbuk extends CI_Controller {
 		$isi['judul'] 		= 'Data Buku';
 		$isi['datbuk']		= $this->db->get('tb_buku')->result();
 		$isi['data']        = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+		$isi['data_uji'] 	= $this->m_datbuk->getKlasbuk();
 
 		$this->load->view('v_header',$isi);
         $this->load->view('v_menu',$isi);
@@ -76,7 +77,7 @@ class C_datbuk extends CI_Controller {
 				'pengarang' => $pengarang,
 				'cover' => $result1
 			);	
-		$this->M_berita->input($data);
+		$this->m_datbuk->input($data);
 		redirect('c_datbuk');
         }
 	}
@@ -217,5 +218,10 @@ class C_datbuk extends CI_Controller {
             $pdf->Cell(30,6,$row->pengarang,1,1); 
         }
         $pdf->Output('Data Buku.pdf' ,  'D');
+  	}
+
+  	public function getKategori()
+  	{
+  		
   	}
 }

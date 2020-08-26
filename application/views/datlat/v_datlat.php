@@ -40,8 +40,9 @@
                           <td><?php echo $row->kategori;?></td>
                           <td><?php echo $row->hasil;?></td>
                           <td>
-                          <a href="<?php echo base_url('c_datlat/processing/'.$row->id_datlat);?>" class="btn btn-primary btn-sm"><i class="fa fa-retweet m-right-xs"> Proses</i></a>
-                          <a href="<?php echo base_url('c_datlat/hapus/'.$row->id_datlat);?>" class="btn btn-danger btn-sm"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
+                          <a href="<?php echo base_url('c_datlat/edit/'.$row->id_datlat);?>" class="btn btn-primary btn-sm"><i class="fa fa-edit m-right-xs"> Ubah</i></a>
+                          <a href="<?php echo base_url('c_datlat/hapus/'.$row->id_datlat);?>" class="btn btn-danger btn-sm" onClick="return confirm('Apakah Anda yakin ingin menghapus?')"><i class="fa fa-trash m-right-xs"> Hapus</i></a>
+                          <a href="<?php echo base_url('c_datlat/processing/'.$row->id_datlat);?>" class="btn btn-info btn-sm"><i class="fa fa-retweet m-right-xs"> Proses</i></a>
                           </td>
                         </tr>
                         <?php }?>

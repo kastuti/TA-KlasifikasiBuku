@@ -44,6 +44,38 @@ class C_datlat extends CI_Controller {
 		redirect('c_datlat');
 	}
 
+	public function edit($id_datlat)
+	{
+		$isi['datlat'] = $this->db->get_where('tb_datlat', ['id_datlat' => $id_datlat])->row_array();
+		$isi['data'] = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+		$this->load->view('v_header',$isi);
+	    $this->load->view('v_menu',$isi);
+	    $this->load->view('v_topnav',$isi);
+		$this->load->view('datlat/v_ubah_datlat',$isi);
+	    $this->load->view('v_footer',$isi);
+	}
+	
+	public function prosesEdit()
+	{
+		$id_datlat = $this->input->post('id_datlat');
+		$js_buku = $this->input->post('js_buku');
+		$kategori = $this->input->post('kategori');
+
+		$data = array(
+			'js_buku' => $js_buku,
+			'kategori' => $kategori
+		);
+		$this->db->where('id_datlat', $id_datlat);
+        $this->db->update('tb_datlat', $data);
+		redirect('c_datlat');
+	}
+
+	public function hapus($id){
+		$where = array('id_datlat' => $id);
+		$this->m_datlat->delete_data($where,'tb_datlat');
+		redirect('c_datlat');
+	}
+
 	public function processing($id)
 	{
 		$datlat	 = $this->m_datlat->get_dataId($id);
@@ -125,11 +157,5 @@ class C_datlat extends CI_Controller {
 			}
 		}
 		return $filter;
-	}
-
-	public function hapus($id){
-		$where = array('id_datlat' => $id);
-		$this->m_datlat->delete_data($where,'tb_datlat');
-		redirect('c_datlat');
 	}
 }

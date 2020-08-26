@@ -13,6 +13,7 @@ class C_dashboard extends CI_Controller {
         $isi['total_datlat'] =  $this->m_dashboard->total_datlat();
         $isi['total_klasbuk'] =  $this->m_dashboard->total_klasbuk();
         $isi['total_buku'] =  $this->m_dashboard->total_buku();
+        $isi['total_admin'] = $this->m_dashboard->total_admin();
 
         $this->load->view('v_header',$isi);
         $this->load->view('v_menu',$isi);

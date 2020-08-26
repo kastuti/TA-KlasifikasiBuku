@@ -78,7 +78,14 @@
                         <label class="col-form-label col-md-3 col-sm-3" for="judul_buku">Judul Buku<span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9">
-                          <input type="text" id="judul_buku" name="judul_buku" required="required" class="form-control ">
+                          <select class="form-control" name="judul_buku" id="id_buku">
+                            <option selected disable>PILIH</option>
+                            <?php
+                              foreach ($data_uji as $data){
+                            ?>
+                              <option value="<?php echo $data->id_klasbuk; ?>" data-kategori="<?php echo $data->hasil2; ?>"><?php echo $data->js_buku; ?></option>
+                            <?php } ?>
+                          </select>
                         </div>
                       </div>
                       <div class="item form-group">
@@ -113,19 +120,7 @@
                         <label class="col-form-label col-md-3 col-sm-3 ">Kategori<span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 ">
-                          <select class="form-control" name="klasifikasi">
-                            <option>Pilih Kategori</option>
-                            <option value="000">Computer science, information, general works</option>
-                            <option value="100">Philosophy & psychology</option>
-                            <option value="200">Religion</option>
-                            <option value="300">Social sciences</option>
-                            <option value="400">Language</option>
-                            <option value="500">Science</option>
-                            <option value="600">Technology</option>
-                            <option value="700">Arts & recreation</option>
-                            <option value="800">Literature</option>
-                            <option value="900">History & geography</option>
-                          </select>
+                          <input type="text" id="klasifikasi" name="klasifikasi" required="required" class="form-control ">
                         </div>
                       </div>
                       <div class="item form-group">
@@ -168,3 +163,7 @@
       </div>
     </div>
         <!-- /page content -->
+
+
+
+        

@@ -51,6 +51,30 @@ class C_klasbuk extends CI_Controller {
 		redirect('c_klasbuk');
 	}
 
+	public function edit($id_klasbuk)
+	{
+		$isi['klasbuk'] = $this->db->get_where('tb_klasbuk', ['id_klasbuk' => $id_klasbuk])->row_array();
+		$isi['data'] = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+		$this->load->view('v_header',$isi);
+	    $this->load->view('v_menu',$isi);
+	    $this->load->view('v_topnav',$isi);
+		$this->load->view('klasbuk/v_ubah_klasbuk',$isi);
+	    $this->load->view('v_footer',$isi);
+	}
+	
+	public function prosesEdit()
+	{
+		$id_datlat = $this->input->post('id_klasbuk');
+		$js_buku = $this->input->post('js_buku');
+
+		$data = array(
+			'js_buku' => $js_buku,
+		);
+		$this->db->where('id_klasbuk', $id_datlat);
+        $this->db->update('tb_klasbuk', $data);
+		redirect('c_klasbuk');
+	}
+
 	public function processing($id)
 	{
 		$klasbuk = $this->m_klasbuk->get_dataId($id);
@@ -120,8 +144,13 @@ class C_klasbuk extends CI_Controller {
 		
 		//memproses data uji
 		$kata_uji = explode(" ", $resultSteming);
+		$hitung_jml_kata_sama = array_count_values($kata_uji); // langsung mengitung jml kata sama dlm array 
 		$jml_kata_uji = count($kata_uji);
 		$kata_valid = array_unique($kata_uji); //untuk menghilangkan kata yang sama pada kalimat
+		$kata_valid_copy = array(); // karena index array di atas berantakan
+		foreach ($kata_valid as $value) {
+			array_push($kata_valid_copy, $value);
+		}
 		$jml_kata_valid = count($kata_valid);
 
 
@@ -135,19 +164,26 @@ class C_klasbuk extends CI_Controller {
 			}
 		}
 
+		// var_dump($kata_valid_copy);
+		// var_dump($hitung_jml_kata_sama);
+
 		// mencari hasil
 		$hasil = array();
 		foreach ($priors as $priors) {
 			$hitung = 0;
+			$cnt = 0;
 			$hitung = $priors['prio'];
 			foreach ($priors_istilah as $istilah) {
 				if ($priors['kategori'] == $istilah['kategori']){
-					$hitung = $hitung * $istilah['prio'];
+					$hitung = $hitung * pow($istilah['prio'],$hitung_jml_kata_sama[$kata_valid_copy[$cnt]]); // pow untuk pangkat
+					$cnt += 1;
 				}
 			}
 			$data_arr = array('hasil' => $hitung, 'kategori' => $priors['kategori'] ); 
 			array_push($hasil, $data_arr);
 		}
+
+		// var_dump($hasil);
 
 		$nampung_hasil = array();
 		foreach ($hasil as $data) {
