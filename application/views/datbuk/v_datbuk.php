@@ -83,7 +83,7 @@
                             <?php
                               foreach ($data_uji as $data){
                             ?>
-                              <option value="<?php echo $data->id_klasbuk; ?>" data-kategori="<?php echo $data->hasil2; ?>"><?php echo $data->js_buku; ?></option>
+                              <option value="<?php echo $data->js_buku; ?>" data-kategori="<?php echo $data->hasil2; ?>"><?php echo $data->js_buku; ?></option>
                             <?php } ?>
                           </select>
                         </div>

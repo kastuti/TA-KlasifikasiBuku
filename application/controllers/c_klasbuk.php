@@ -206,8 +206,25 @@ class C_klasbuk extends CI_Controller {
 			'hasil2'    => $hasil_akhir
 		);
 
+		foreach ($hasil as $value) {
+			$value['id_buku'] = $id;
+			$this->m_klasbuk->insert_data($value,'tb_perhitungan');
+		}
+
 		$this->m_klasbuk->ubah($id_klasbuk,$data);
 		redirect('c_klasbuk');
+	}
+
+	public function lihat_hasil($id){
+		$isi['klasbuk'] = $this->db->get_where('tb_klasbuk', ['id_klasbuk' => $id])->row_array();
+		$isi['data'] = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+		$isi['hasil'] = $this->m_klasbuk->get_dataHasilById($id);
+		// var_dump($isi['hasil']);
+		$this->load->view('v_header',$isi);
+	    $this->load->view('v_menu',$isi);
+	    $this->load->view('v_topnav',$isi);
+		$this->load->view('klasbuk/v_hasil',$isi);
+	    $this->load->view('v_footer',$isi);
 	}
 
 	public function tokenizing($value)

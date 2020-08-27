@@ -19,6 +19,10 @@ class M_klasbuk extends CI_Model{
 		return $this->db->get_where('tb_klasbuk', ['id_klasbuk' => $id])->row_array();
 	}
 
+	function get_dataHasilById($id){
+		return $this->db->get_where('tb_perhitungan', ['id_buku' => $id])->result();
+	}
+
 	public function ubah($id_klasbuk,$data)
 	{
 		$this->db->where($id_klasbuk);
