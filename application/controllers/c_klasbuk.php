@@ -81,8 +81,9 @@ class C_klasbuk extends CI_Controller {
 		$js_buku = $klasbuk['js_buku'];
 		$hasil   = strtolower(trim($js_buku));
 
-		$hasil = str_replace("'", " ", $hasil);
-	    $hasil = str_replace("-", " ", $hasil);
+		//penghilangan karakter
+		// $hasil = str_replace("'", " ", $hasil);
+	 //    $hasil = str_replace("-", " ", $hasil);
 	    $hasil = str_replace(")", " ", $hasil);
 	    $hasil = str_replace("(", " ", $hasil);
 	    $hasil = str_replace("\"", " ", $hasil);
@@ -93,7 +94,23 @@ class C_klasbuk extends CI_Controller {
 	    $hasil = str_replace(":", " ", $hasil);
 	    $hasil = str_replace(";", " ", $hasil);
 	    $hasil = str_replace("!", " ", $hasil);
+	    $hasil = str_replace("&", " ", $hasil);
+	    $hasil = str_replace("@", " ", $hasil);
+	    $hasil = str_replace("#", " ", $hasil);
+	    $hasil = str_replace("$", " ", $hasil);
+	    $hasil = str_replace("%", " ", $hasil);
+	    $hasil = str_replace("*", " ", $hasil);
+	    $hasil = str_replace("_", " ", $hasil);
+	    $hasil = str_replace("+", " ", $hasil);
+	    $hasil = str_replace("{", " ", $hasil);
+	    $hasil = str_replace("}", " ", $hasil);
+	    $hasil = str_replace("[", " ", $hasil);
+	    $hasil = str_replace("]", " ", $hasil);
+	    $hasil = str_replace("|", " ", $hasil);
+	    $hasil = str_replace("<", " ", $hasil);
+	    $hasil = str_replace(">", " ", $hasil);
 	    $hasil = str_replace("?", " ", $hasil);
+	    $hasil = str_replace("^", " ", $hasil);
 	    $hasil = str_replace("0", " ", $hasil);
 	    $hasil = str_replace("1", " ", $hasil);
 	    $hasil = str_replace("2", " ", $hasil);
@@ -153,17 +170,24 @@ class C_klasbuk extends CI_Controller {
 		}
 		$jml_kata_valid = count($kata_valid);
 
-
+		// var_dump($kata_valid);
+		// var_dump($kata_latih_per_kategori);
 		$priors_istilah = array();
 		foreach ($kata_latih_per_kategori as $kategori) {
+			// var_dump($kata_valid);
+			// echo '<br/>';
 			foreach ($kata_valid as $kata) {
-				 $hitung_kata = substr_count($kategori['kata'], $kata);
-				 $probability = ($hitung_kata + 1)/($kategori['jumlah'] + $jml_kata_latih_valid); // rumus utama
-				 $data_arr = array('prio' => $probability, 'kategori' => $kategori['kategori']);
-				 array_push($priors_istilah, $data_arr);
+				 // var_dump($kata);
+				 if ($kata != ''){ // jika ada kata yang tidak ada
+				 		$hitung_kata = substr_count($kategori['kata'], $kata);
+					 	$probability = ($hitung_kata + 1)/($kategori['jumlah'] + $jml_kata_latih_valid); // rumus utama
+						$data_arr = array('prio' => $probability, 'kategori' => $kategori['kategori']);
+					 	array_push($priors_istilah, $data_arr);
+				 }
 			}
 		}
-
+		
+		// var_dump(count($priors_istilah));
 		// var_dump($kata_valid_copy);
 		// var_dump($hitung_jml_kata_sama);
 

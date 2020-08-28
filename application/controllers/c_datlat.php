@@ -81,9 +81,9 @@ class C_datlat extends CI_Controller {
 		$datlat	 = $this->m_datlat->get_dataId($id);
 		$js_buku = $datlat['js_buku'];
 		$hasil   = strtolower(trim($js_buku));
-
-		$hasil = str_replace("'", " ", $hasil);
-	    $hasil = str_replace("-", " ", $hasil);
+		//penghilangan karakter
+		// $hasil = str_replace("'", " ", $hasil);
+	 //    $hasil = str_replace("-", " ", $hasil);
 	    $hasil = str_replace(")", " ", $hasil);
 	    $hasil = str_replace("(", " ", $hasil);
 	    $hasil = str_replace("\"", " ", $hasil);
@@ -94,7 +94,23 @@ class C_datlat extends CI_Controller {
 	    $hasil = str_replace(":", " ", $hasil);
 	    $hasil = str_replace(";", " ", $hasil);
 	    $hasil = str_replace("!", " ", $hasil);
+	    $hasil = str_replace("&", " ", $hasil);
+	    $hasil = str_replace("@", " ", $hasil);
+	    $hasil = str_replace("#", " ", $hasil);
+	    $hasil = str_replace("$", " ", $hasil);
+	    $hasil = str_replace("%", " ", $hasil);
+	    $hasil = str_replace("*", " ", $hasil);
+	    $hasil = str_replace("_", " ", $hasil);
+	    $hasil = str_replace("+", " ", $hasil);
+	    $hasil = str_replace("{", " ", $hasil);
+	    $hasil = str_replace("}", " ", $hasil);
+	    $hasil = str_replace("[", " ", $hasil);
+	    $hasil = str_replace("]", " ", $hasil);
+	    $hasil = str_replace("|", " ", $hasil);
+	    $hasil = str_replace("<", " ", $hasil);
+	    $hasil = str_replace(">", " ", $hasil);
 	    $hasil = str_replace("?", " ", $hasil);
+	    $hasil = str_replace("^", " ", $hasil);
 	    $hasil = str_replace("0", " ", $hasil);
 	    $hasil = str_replace("1", " ", $hasil);
 	    $hasil = str_replace("2", " ", $hasil);
@@ -105,6 +121,7 @@ class C_datlat extends CI_Controller {
 	    $hasil = str_replace("7", " ", $hasil);
 	    $hasil = str_replace("8", " ", $hasil);
 	    $hasil = str_replace("9", " ", $hasil);
+
 		$resultToken=$this->tokenizing($hasil);
 		$resultFiltering=$this->filtering($resultToken);
 		
