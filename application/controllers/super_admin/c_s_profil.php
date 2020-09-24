@@ -1,28 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_profil extends CI_Controller {
+class C_s_profil extends CI_Controller {
 
     function __construct(){
         parent::__construct();
         $this->load->helper('url');
         $this->load->database();
         $this->load->library('form_validation');
-        $this->load->model('m_profil');
+        $this->load->model('m_s_profil');
     }
 
     public function index(){
-
-        $isi['content']     = 'profil/v_profil';
-        $isi['judul']       = 'Profil';
         $isi['data']        = $this->db->get_where('tb_admin', ['email' =>
                               $this->session->userdata('email')])->row_array();
 
-        $this->load->view('v_header',$isi);
-        $this->load->view('v_menu',$isi);
-        $this->load->view('v_topnav',$isi);
-        $this->load->view('profil/v_profil',$isi);
-        $this->load->view('v_footer',$isi);
+        $this->load->view('super_admin/v_header',$isi);
+        $this->load->view('super_admin/v_menu',$isi);
+        $this->load->view('super_admin/v_topnav',$isi);
+        $this->load->view('super_admin/v_s_profil',$isi);
+        $this->load->view('super_admin/v_footer',$isi);
     
     }
 
@@ -32,17 +29,17 @@ class C_profil extends CI_Controller {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('v_header',$isi);
-            $this->load->view('v_menu',$isi);
-            $this->load->view('v_topnav',$isi);
-            $this->load->view('profil/v_ubah_profil',$isi);
-            $this->load->view('v_footer',$isi);  
+            $this->load->view('super_admin/v_header',$isi);
+            $this->load->view('super_admin/v_menu',$isi);
+            $this->load->view('super_admin/v_topnav',$isi);
+            $this->load->view('super_admin/v_s_ubah_profil',$isi);
+            $this->load->view('super_admin/v_footer',$isi);  
         }else{
 
             $config['upload_path'] = './upload/profil/';
             $config['allowed_types'] = 'pdf|img|doc|docx|jpg|jpeg|png';
             $config['overwrite']            = true;
-            $config['max_size']             = 3072; // 1MB
+            $config['max_size']             = 3072; // 3MB
 
             $this->load->library('upload', $config,'kkupload'); 
             $this->kkupload->initialize($config,'kkupload');
@@ -68,7 +65,7 @@ class C_profil extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data profil telah di edit! <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>');
-            redirect('c_profil');
+            redirect('super_admin/c_s_profil');
         }
     }
 }

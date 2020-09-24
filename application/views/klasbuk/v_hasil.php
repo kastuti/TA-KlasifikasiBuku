@@ -7,7 +7,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Hasil Perhitungan Data Uji</h2>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="<?php echo base_url('c_klasbuk');?>" class="btn btn-primary btn-sm">X</a></span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="<?php echo base_url('c_klasbuk');?>" class="btn btn-danger btn-sm">X</a></span>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">

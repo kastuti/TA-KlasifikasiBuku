@@ -13,7 +13,7 @@ class C_auth extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('email')){
-			redirect('c_dashboard');
+			redirect('super_admin/c_s_dashboard');
 		}
 
 		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
@@ -42,24 +42,29 @@ class C_auth extends CI_Controller
 
 		if($admin)
 		{
-			//data admin ada
+			if ($admin['active_id'] == 1) {
 			//kemudian cek password
-			if(password_verify($password, $admin['password']))
-			{
-				$data = [
-					'email' => $admin['email']
-				];
-				$this->session->set_userdata($data);
-				redirect('c_dashboard');
-			}
-			else
-			{
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+				if(password_verify($password, $admin['password']))
+				{
+					$data = [
+						'email' => $admin['email'],
+						'role_id' => $admin['role_id']
+					];
+					$this->session->set_userdata($data);
+					if ($admin['role_id'] == 1) {
+						redirect('super_admin/c_s_dashboard');
+					} else {
+						redirect('c_dashboard');
+					}
+				}else{
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+					redirect('c_auth');
+				}
+			}else{
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum teraktifasi!</div>');
 				redirect('c_auth');
 			}
-		}
-		else
-		{
+		}else{
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum terdaftar!</div>');
 			redirect('c_auth');
 		}
@@ -68,7 +73,7 @@ class C_auth extends CI_Controller
 	public function registrasi()
 	{
 		if ($this->session->userdata('email')){
-			redirect('c_dashboard');
+			redirect('super_admin/c_s_dashboard');
 		}
 
 		$this->form_validation->set_rules('nama', 'fullname', 'required|trim');
@@ -94,6 +99,9 @@ class C_auth extends CI_Controller
 				'email' => htmlspecialchars($this->input->post('email', true)),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'foto' => 'default.jpg',
+				'role_id' => 2,
+				'role' => 'pustakawan',
+				'active_id' => 1,
 			];
 
 			$this->db->insert('tb_admin', $data);
@@ -139,6 +147,7 @@ class C_auth extends CI_Controller
 	{
 		
 		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('role_id');
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah keluar!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>

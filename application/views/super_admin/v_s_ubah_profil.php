@@ -10,13 +10,13 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url('c_profil/editadmin/' .$data['id_admin']); ?>" enctype="multipart/form-data">
+                    <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url('super_admin/c_s_profil/editadmin/' .$data['id_admin']); ?>" enctype="multipart/form-data">
                       <div class="item form-group">
                         <label class="col-form-label col-md-2 col-sm-2 " for="email">Email<span class="required">*</span>
                         </label> 
                         <div class="col-md-10 col-sm-10 ">
                         <input class="form-control" name="id_admin" type="hidden" value="<?=$data['id_admin']?>">
-                          <input type="text" id="email" name="email" required="required" class="form-control" value="<?= $data['email']; ?>" readonly>
+                          <input class="form-control" id="email" name="email" value="<?= $data['email']; ?>" readonly>
                         </div>
                       </div>
                       <div class="item form-group">
@@ -47,7 +47,7 @@
                       <div class="ln_solid"></div>
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 ">
-                          <a href="<?php echo base_url('c_profil')?>" class="btn btn-danger btn-sm"><i class="fa fa-remove m-right-xs"> Batal</i></a>
+                          <a href="<?php echo base_url('super_admin/c_s_profil')?>" class="btn btn-danger btn-sm"><i class="fa fa-remove m-right-xs"> Batal</i></a>
                           <button type="submit" name="ubah" class="btn btn-success btn-sm"><i class="fa fa-file m-right-xs"> Simpan</i></button>
                           <!-- <button type="submit" value="upload" class="btn btn-success"><i class="fa fa-file m-right-xs"> Simpan</i></button> -->
                         </div>

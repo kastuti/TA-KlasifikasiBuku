@@ -4,7 +4,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Profil Pustakawan</h2>
+                    <h2>Profil Admin</h2>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -17,7 +17,7 @@
                             <table class="table table-bordered">
                               <thead>
                                 <tr>
-                                  <th width="20%">Pustakawan</th>
+                                  <th width="20%">Administrator</th>
                                   <th> <?= $data['nama'];?> </th>
                                 </tr>
                               </thead>
@@ -40,7 +40,7 @@
                           <div class="form-group">
                             <label  class="col-md-12 control-label"></label>
                             <div class="col-md-12">
-                            <a href="<?=base_url('c_profil/editadmin/' . $data['id_admin'])?>" class="btn btn-success btn-sm"><i class="fa fa-edit">Ubah Profil</i></a>
+                            <a href="<?=base_url('super_admin/c_s_profil/editadmin/' . $data['id_admin'])?>" class="btn btn-success btn-sm"><i class="fa fa-edit">Ubah Profil</i></a>
                             </div>
                           </div>
 

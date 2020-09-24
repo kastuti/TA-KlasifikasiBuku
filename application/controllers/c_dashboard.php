@@ -5,6 +5,7 @@ class C_dashboard extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
+        // login_in_admin();
         $this->load->model('m_dashboard');
     }
 

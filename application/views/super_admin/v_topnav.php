@@ -12,7 +12,6 @@
                     <span><?= $data['nama'];?></span>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="<?php echo base_url('c_profil'); ?>"> My Profil</a>
                     <a class="dropdown-item"  href="<?php echo base_url('c_auth/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Keluar</a>
                   </div>
                 </li>
