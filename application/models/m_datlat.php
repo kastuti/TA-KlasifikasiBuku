@@ -30,4 +30,10 @@ class M_datlat extends CI_Model{
 		$this->db->delete($table);
 	}
 
+	public function tampilDatlat_Excel()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_datlat');
+		return $this->db->get();
+	}
 }

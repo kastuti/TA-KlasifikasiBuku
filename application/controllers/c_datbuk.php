@@ -219,9 +219,4 @@ class C_datbuk extends CI_Controller {
         }
         $pdf->Output('Data Buku.pdf' ,  'D');
   	}
-
-  	public function getKategori()
-  	{
-  		
-  	}
 }

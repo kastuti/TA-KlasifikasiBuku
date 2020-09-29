@@ -11,6 +11,9 @@ class C_s_dashboard extends CI_Controller {
 
     public function index(){
 		$isi['data']        = $this->db->get_where('tb_admin', ['email' => $this->session->userdata('email')])->row_array();
+        $isi['total_datlat'] =  $this->m_s_dashboard->total_datlat();
+        $isi['total_klasbuk'] =  $this->m_s_dashboard->total_klasbuk();
+        $isi['total_buku'] =  $this->m_s_dashboard->total_buku();
         $isi['total_admin'] = $this->m_s_dashboard->total_admin();
 
         $this->load->view('super_admin/v_header',$isi);

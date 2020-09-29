@@ -1,7 +1,7 @@
 		<!-- footer content -->
         <footer>
           <div class="pull-left">
-            <p>Pengembangan Aplikasi Web Untuk Mengklasifikasikan Jenis Buku Berdasarkan Dewey Decimal Classification dengan Memanfaatkan Metode Multinomial Naive Bayes</p>
+            <p>Pengembangan Aplikasi Web Untuk Klasifikasi Jenis Buku Berdasarkan Dewey Decimal Classification dengan Memanfaatkan Metode Multinomial Naive Bayes</p>
           </div>
           <div class="clearfix"></div>
         </footer>

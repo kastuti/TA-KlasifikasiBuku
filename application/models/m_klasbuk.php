@@ -40,4 +40,10 @@ class M_klasbuk extends CI_Model{
 		return $count_kategori;
 	} 
 
+	public function tampilKlasbuk_Excel()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_klasbuk');
+		return $this->db->get();
+	}
 }
