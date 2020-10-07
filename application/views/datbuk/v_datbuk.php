@@ -17,8 +17,6 @@
 
                     <p class="text-muted font-13 m-b-30">
                       Data buku merupakan data yang berisi daftar buku yang telah diklasifikasikan.<br><br>
-                      <a href="<?php echo base_url('c_datbuk/export_excel/');?>" class="btn btn-info btn-sm">Excel</a>
-                      <a href="<?php echo base_url('c_datbuk/export_pdf/');?>" class="btn btn-info btn-sm">PDF</a>
                     </p>
                      
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">

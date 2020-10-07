@@ -67,20 +67,20 @@ class C_report_klasbuk extends CI_Controller {
 	}
 
 	public function export_Pdf(){
-		$pdf = new FPDF('p','mm','A4');
+		$pdf = new FPDF('l','mm','A4');
         // membuat halaman baru
         $pdf->AddPage();
         
         // setting jenis font yang akan digunakan
         $pdf->SetFont('Arial','B',10);
-        $pdf->Cell(195,6,'DATA UJI',0,1,'C');
+        $pdf->Cell(265,6,'DATA UJI',0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(15,6,'',0,1);
         $pdf->SetFont('Arial','B',8);
         $pdf->Cell(10,6,'No',1,0);
         $pdf->Cell(10,6,'ID',1,0);
-        $pdf->Cell(145,6,'Judul/Sinopsis Buku',1,0);
-        $pdf->Cell(25,6,'Hasil Klasifikasi',1,1);
+        $pdf->Cell(185,6,'Judul/Sinopsis Buku',1,0);
+        $pdf->Cell(70,6,'Hasil Klasifikasi',1,1);
         $pdf->SetFont('Arial','',8);
         $klasbuk = $this->db->get('tb_klasbuk')->result();
         $no=0;
@@ -88,8 +88,8 @@ class C_report_klasbuk extends CI_Controller {
         foreach ($klasbuk as $row){
         	$pdf->Cell(10,6,$no++,1,0);
             $pdf->Cell(10,6,$row->id_klasbuk,1,0);
-            $pdf->Cell(145,6,$row->js_buku,1,0);
-            $pdf->Cell(25,6,$row->hasil2,1,1); 
+            $pdf->Cell(185,6,$row->js_buku,1,0);
+            $pdf->Cell(70,6,$row->hasil2,1,1); 
         }
         $pdf->Output('Data Uji.pdf' ,  'D');
   	}

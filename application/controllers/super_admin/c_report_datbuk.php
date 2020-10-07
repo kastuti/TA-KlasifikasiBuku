@@ -91,25 +91,25 @@ class C_report_datbuk extends CI_Controller {
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,6,'',0,1);
         $pdf->SetFont('Arial','B',8);
-        $pdf->Cell(10,6,'ID',1,0);
-        $pdf->Cell(120,6,'Judul Buku',1,0);
-        $pdf->Cell(25,6,'ISBN',1,0);
-        $pdf->Cell(25,6,'Penerbit',1,0);
-        $pdf->Cell(23,6,'Tahun Terbit',1,0);
-        $pdf->Cell(30,6,'Tempat Terbit',1,0);
-        $pdf->Cell(17,6,'Kategori',1,0);
-        $pdf->Cell(30,6,'Pengarang',1,1);
+        $pdf->Cell(8,6,'ID',1,0);
+        $pdf->Cell(110,6,'Judul Buku',1,0);
+        $pdf->Cell(26,6,'ISBN',1,0);
+        $pdf->Cell(20,6,'Penerbit',1,0);
+        $pdf->Cell(20,6,'Tahun Terbit',1,0);
+        $pdf->Cell(25,6,'Tempat Terbit',1,0);
+        $pdf->Cell(50,6,'Kategori',1,0);
+        $pdf->Cell(20,6,'Pengarang',1,1);
         $pdf->SetFont('Arial','',8);
         $datbuk = $this->db->get('tb_buku')->result();
         foreach ($datbuk as $row){
-            $pdf->Cell(10,6,$row->id_buku,1,0);
-            $pdf->Cell(120,6,$row->judul_buku,1,0);
-            $pdf->Cell(25,6,$row->isbn,1,0);
-            $pdf->Cell(25,6,$row->penerbit,1,0);
-            $pdf->Cell(23,6,$row->tahun_terbit,1,0); 
-            $pdf->Cell(30,6,$row->tempat_terbit,1,0); 
-            $pdf->Cell(17,6,$row->klasifikasi,1,0);  
-            $pdf->Cell(30,6,$row->pengarang,1,1); 
+            $pdf->Cell(8,6,$row->id_buku,1,0);
+            $pdf->Cell(110,6,$row->judul_buku,1,0);
+            $pdf->Cell(26,6,$row->isbn,1,0);
+            $pdf->Cell(20,6,$row->penerbit,1,0);
+            $pdf->Cell(20,6,$row->tahun_terbit,1,0); 
+            $pdf->Cell(25,6,$row->tempat_terbit,1,0); 
+            $pdf->Cell(50,6,$row->klasifikasi,1,0);  
+            $pdf->Cell(20,6,$row->pengarang,1,1); 
         }
         $pdf->Output('Data Buku.pdf' ,  'D');
   	}

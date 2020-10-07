@@ -72,16 +72,16 @@
                         <div class="col-md-8 col-sm-8 ">
                           <select class="form-control" name="kategori">
                             <option>Pilih Kategori</option>
-                            <option value="000">Computer science, information, general works</option>
-                            <option value="100">Philosophy & psychology</option>
-                            <option value="200">Religion</option>
-                            <option value="300">Social sciences</option>
-                            <option value="400">Language</option>
-                            <option value="500">Science</option>
-                            <option value="600">Technology</option>
-                            <option value="700">Arts & recreation</option>
-                            <option value="800">Literature</option>
-                            <option value="900">History & geography</option>
+                            <option value="Computer science, information, general works">000</option>
+                            <option value="Philosophy & psychology">100</option>
+                            <option value="Religion">200</option>
+                            <option value="Social sciences">300</option>
+                            <option value="Language">400</option>
+                            <option value="Science">500</option>
+                            <option value="Technology">600</option>
+                            <option value="Arts & recreation">700</option>
+                            <option value="Literature">800</option>
+                            <option value="History & geography">900</option>
                           </select>
                         </div>
                     </div>
